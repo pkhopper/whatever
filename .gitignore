@@ -1,3 +1,5 @@
+src/bdb/*
+
 # Compiled Object files
 *.slo
 *.lo
