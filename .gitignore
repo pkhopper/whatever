@@ -1,4 +1,14 @@
-src/bdb/*
+support/*
+dbbox/dbbox/ipch/*
+dbbox/dbbox/Debug/*
+dbbox/dbbox/Release/*
+*.filters
+*.user
+*.sdf
+*.suo
+*.opensdf
+*.sdf
+*.db
 
 # Compiled Object files
 *.slo
