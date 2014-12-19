@@ -3,6 +3,9 @@ support/*
 dbbox/dbbox/ipch/*
 dbbox/dbbox/Debug/*
 dbbox/dbbox/Release/*
+dbbox/ipch/*
+dbbox/Debug/*
+dbbox/Release/*
 *.filters
 *.user
 *.sdf
