@@ -1,3 +1,10 @@
+out/*
+ipch/*
+pbbox/Debug/*
+pbbox/Release/*
+bdbbox/Debug/*
+bdbbox/Release/*
+
 *.filters
 *.user
 *.sdf

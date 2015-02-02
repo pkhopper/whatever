@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bdbbox", "bdbbox\bdbbox.vcxproj", "{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pbbox", "pbbox\pbbox.vcxproj", "{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}.Debug|Win32.Build.0 = Debug|Win32
+		{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}.Release|Win32.ActiveCfg = Release|Win32
+		{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}.Release|Win32.Build.0 = Release|Win32
+		{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}.Debug|Win32.Build.0 = Debug|Win32
+		{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}.Release|Win32.ActiveCfg = Release|Win32
+		{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
