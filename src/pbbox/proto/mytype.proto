@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+message MyType{
+    required int32 id = 1;
+	required int64 longId = 2;
+    optional bytes StrMessage = 3;
+}
+

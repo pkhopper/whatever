@@ -12,13 +12,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\pbbox\main.cpp" />
-    <ClCompile Include="..\..\src\pbbox\proto\test.pb.cc" />
+    <ClCompile Include="..\..\src\pbbox\messages\mytype.pb.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\pbbox\proto\test.pb.h" />
+    <ClInclude Include="..\..\src\pbbox\messages\mytype.pb.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\src\pbbox\proto\test.proto" />
+    <None Include="..\..\src\pbbox\proto\mytype.proto" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}</ProjectGuid>
