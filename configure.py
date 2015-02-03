@@ -6,39 +6,30 @@ import sys
 import subprocess
 reload(sys).setdefaultencoding("utf8")
 
-_src_path="src"
-_bdbbox_path="src/bdbbox"
-_pbbox_path="src/pbbox"
-_proto_file_path=os.path.join(_pbbox_path, "proto")
-_protoc_bin="vsprojects/pbbox/protoc.exe"
-_protoc_cpp_out="--cpp_out=%s" % ("./")
+pabspath = os.path.abspath
+pjoin = os.path.join
+
+_src_path = pabspath("src")
+_bdbbox_path = pabspath("src/bdbbox")
+_pbbox_path = pabspath("src/pbbox")
+_protoc_bin = pabspath("vsprojects/pbbox/protoc.exe")
+_protoc_cpp_out = "--cpp_out=%s" % (pabspath("./"))
+_protoc_proto_path = pabspath(pjoin(_pbbox_path, "proto"))
 
 def _exec_bin(*cmd_args):
-    subp = subprocess.Popen(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    while subp.poll() is None:
-        stdout =  subp.stdout.readline()
-        stderr =  subp.stderr.readline()
-        if stdout.strip() is not "":
-            print(stdout)
-        if stderr.strip() is not "":
-            print(stderr)
-        sys.stdout.flush()
+    print cmd_args
+    subp = subprocess.Popen(cmd_args, stdout=sys.stdout, stderr=sys.stderr)
     return subp.returncode
-
-def _build_cl_proto(src_proto, out_hcpp):
-    return _exec_bin(_protoc_bin, src_proto, out_hcpp)
 
 def compile_proto_files():
     print("compile_proto_files:")
-    proto_files = [os.path.join(_proto_file_path, f) for f in os.listdir(_proto_file_path) if f.endswith(".proto")]
-    count = 0
-    for proto in proto_files:
-        if _build_cl_proto(proto, _protoc_cpp_out) is 0:
-            count += 1
-    print("compile_proto_files finish: %d files compiled." % (count))
+    proto_files = [pjoin(_protoc_proto_path, f) for f in os.listdir(_protoc_proto_path) if f.endswith(".proto")]
+    _exec_bin(_protoc_bin, _protoc_cpp_out, proto_files)
+    print("compile_proto_files finish: %d files compiled." % (len(proto_files)))
 
 def main():
     compile_proto_files()
 
 if __name__ == '__main__':
-    main()
+        main()
+
