@@ -13,10 +13,19 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\bdbbox\bdb_vecter.cpp" />
     <ClCompile Include="..\..\src\bdbbox\dbbox.cpp" />
+    <ClCompile Include="db_interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\bdbbox\bdb_vecter.h" />
     <ClInclude Include="..\..\src\bdbbox\DBBox.h" />
+    <ClInclude Include="bdbcursor.h" />
+    <ClInclude Include="bdbdb.h" />
+    <ClInclude Include="bdbenv.h" />
+    <ClInclude Include="bdbtxn.h" />
+    <ClInclude Include="bd_base.h" />
+    <ClInclude Include="bd_common.h" />
+    <ClInclude Include="db_interface.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}</ProjectGuid>
