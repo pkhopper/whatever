@@ -22,8 +22,8 @@
     <ClInclude Include="bdbdb.h" />
     <ClInclude Include="bdbenv.h" />
     <ClInclude Include="bdbtxn.h" />
-    <ClInclude Include="bd_base.h" />
-    <ClInclude Include="bd_common.h" />
+    <ClInclude Include="db_base.h" />
+    <ClInclude Include="db_common.h" />
     <ClInclude Include="db_interface.h" />
     <ClInclude Include="types.h" />
   </ItemGroup>

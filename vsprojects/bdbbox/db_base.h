@@ -7,6 +7,9 @@
 
 namespace bdbutil
 {
+	#pragma pack(push) 
+	#pragma pack(1) 
+
 	typedef  unsigned char default_version_t;
 
 	template<typename _VersionT = default_version_t>
@@ -83,7 +86,8 @@ namespace bdbutil
 		_AdaptionT    _adaption[_AdaptionNumber];
 		int           _count;
 	};
-
+ 
+#pragma pack(pop) 
 
 }// eof bdbutil
 #endif // eof _BDBBOX_BDB_CNM_H_
