@@ -31,8 +31,6 @@ namespace testtools
             return true;
         }
 
-
-
     protected:
         std::string                _full_cmd;
         std::string                _name;
