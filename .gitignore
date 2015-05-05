@@ -1,4 +1,6 @@
 support/*
+vsprojects/bin/*
+vsprojects/ipch/*
 
 *.idb
 *.filters
