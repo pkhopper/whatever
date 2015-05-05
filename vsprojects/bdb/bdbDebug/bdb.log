@@ -1,0 +1,17 @@
+﻿生成启动时间为 2015/5/5 21:10:32。
+     1>项目“D:\github\whatever\vsprojects\bdb\bdb.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“bdbDebug\bdb.unsuccessfulbuild”执行 Touch 任务。
+       ClCompile:
+         所有输出均为最新。
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\github\whatever\vsprojects\bin\bdb_d.lib" /NOLOGO bdbDebug\db_interface.obj
+         bdb.vcxproj -> D:\github\whatever\vsprojects\bin\bdb_d.lib
+       FinalizeBuildStatus:
+         正在删除文件“bdbDebug\bdb.unsuccessfulbuild”。
+         正在对“bdbDebug\bdb.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“D:\github\whatever\vsprojects\bdb\bdb.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.10

@@ -11,37 +11,34 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\bdbbox\bdb_vecter.cpp" />
-    <ClCompile Include="..\..\src\bdbbox\dbbox.cpp" />
-    <ClCompile Include="db_interface.cpp" />
+    <ClInclude Include="..\..\src\bdb\bdbcursor.h" />
+    <ClInclude Include="..\..\src\bdb\bdbdb.h" />
+    <ClInclude Include="..\..\src\bdb\bdbenv.h" />
+    <ClInclude Include="..\..\src\bdb\bdbtxn.h" />
+    <ClInclude Include="..\..\src\bdb\db_base.h" />
+    <ClInclude Include="..\..\src\bdb\db_common.h" />
+    <ClInclude Include="..\..\src\bdb\db_interface.h" />
+    <ClInclude Include="..\..\src\bdb\types.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\bdbbox\bdb_vecter.h" />
-    <ClInclude Include="..\..\src\bdbbox\DBBox.h" />
-    <ClInclude Include="bdbcursor.h" />
-    <ClInclude Include="bdbdb.h" />
-    <ClInclude Include="bdbenv.h" />
-    <ClInclude Include="bdbtxn.h" />
-    <ClInclude Include="db_base.h" />
-    <ClInclude Include="db_common.h" />
-    <ClInclude Include="db_interface.h" />
-    <ClInclude Include="types.h" />
+    <ClCompile Include="..\..\src\bdb\db_interface.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{94FDBE2E-A8A7-44F5-9A84-F01E29EA4EA0}</ProjectGuid>
-    <RootNamespace>bdbbox</RootNamespace>
+    <ProjectGuid>{EB4D2436-2437-49F3-AAA3-AFDFAB2F8EE0}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>bdb</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -54,40 +51,47 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>..\out\</OutDir>
-    <TargetName>$(ProjectName)_d</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(projectName)$(Configuration)\</IntDir>
+    <TargetName>$(projectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\out\</OutDir>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <TargetName>$(projectName)</TargetName>
+    <IntDir>$(projectName)$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\support\bdb\inc</AdditionalIncludeDirectories>
-      <ProgramDataBaseFileName>$(OutDir)$(TargetName)</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\support\;..\..\support\pb\inc;..\..\support\bdb\inc;..\..\support\boost</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libdb61d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../support/bdb/lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>..\..\support\bdb\inc</AdditionalIncludeDirectories>
-      <ProgramDataBaseFileName>$(OutDir)$(TargetName)</ProgramDataBaseFileName>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\support\;..\..\support\pb\inc;..\..\support\bdb\inc;..\..\support\boost</AdditionalIncludeDirectories>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libdb61.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../support/bdb/lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

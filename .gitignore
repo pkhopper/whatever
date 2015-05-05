@@ -1,3 +1,5 @@
+support/*
+
 *.idb
 *.filters
 *.user
