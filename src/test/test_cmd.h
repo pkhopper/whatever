@@ -2,9 +2,10 @@
 #define _TEST_TEST_COMMAND_H_
 
 #include "stdafx.h"
+#include <boost/algorithm/string.hpp>
 #include <string>
 #include <vector>
-#include <boost/algorithm/string.hpp>
+#include "time_interval.h"
 
 
 namespace testtools
@@ -31,10 +32,10 @@ namespace testtools
             return true;
         }
 
-    protected:
         std::string                _full_cmd;
         std::string                _name;
         std::vector<std::string>   _params;
+        TimeInterval               _time_interval;
     };
 
 

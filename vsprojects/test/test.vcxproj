@@ -16,6 +16,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\test\stdafx.h" />
     <ClInclude Include="..\..\src\test\test_cmd.h" />
+    <ClInclude Include="..\..\src\test\time_interval.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6CBD3498-AB51-4BE2-9DD0-3B035A9C5541}</ProjectGuid>
