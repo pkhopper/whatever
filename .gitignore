@@ -1,10 +1,10 @@
 support/*
 vsprojects/bin/*
 vsprojects/ipch/*
-vsprojects/bdb/bdbDebug
-vsprojects/bdb/bdbRelease
-vsprojects/test/testDebug
-vsprojects/test/testRelease
+vsprojects/bdb/bdbDebug/*
+vsprojects/bdb/bdbRelease/*
+vsprojects/test/testDebug/*
+vsprojects/test/testRelease/*
 
 *.idb
 *.filters
