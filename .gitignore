@@ -5,6 +5,8 @@ vsprojects/bdb/bdbDebug/*
 vsprojects/bdb/bdbRelease/*
 vsprojects/test/testDebug/*
 vsprojects/test/testRelease/*
+vsprojects/pbbox/pbboxDebug/*
+vsprojects/pbbox/pbboxRelease/*
 
 *.idb
 *.filters

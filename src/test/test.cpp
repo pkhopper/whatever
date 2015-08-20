@@ -18,10 +18,14 @@ int main(int argc, char* argv[])
     { 
         count = atoi(argv[1]);
     }
-    testtools::StaticCircularQueue<int,10> squeue;
+    testtools::StaticCircularQueue<int,10,false> squeue;
     for(int i=0; i < count; ++i)
     {
-        squeue.push(i);
+        auto ptr = squeue.push(i);
+        if (!ptr)
+        {
+            printf("push() -> null \n");
+        }
     }
     printf("count=%d\n", squeue.count());
     for(int i=0; i < squeue.count(); ++i)

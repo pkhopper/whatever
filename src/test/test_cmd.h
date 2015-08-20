@@ -11,7 +11,7 @@
 namespace testtools
 {
 
-    template<typename _T,unsigned int _Count>
+    template<typename _T,unsigned int _Count,bool _OverWrite=false>
     class StaticCircularQueue
     {
     public:
@@ -24,35 +24,49 @@ namespace testtools
         {
             _f = 0; 
             _r = 0;
-            memset(_list, 0, (_Count+1)*sizeof(_T));
+            memset(_list, 0, (_Count)*sizeof(_T));
         }
 
-        void push(_T &data)
+        _T *push(_T &data)
         {
-            *(_list + _r) = data;
-            _r = (_r + 1) % (_Count + 1);
+            if (!_OverWrite && _r + 1 == _f)
+            {
+                return NULL;
+            }
+            auto ptr = _list + _r;
+            _r = (_r + 1) % (_Count);
             if (_r == _f)
             {
-                _f = (_f + 1) % (_Count + 1);
+                _f = (_f + 1) % (_Count);
             }
+            *ptr = data;
+            return ptr;
         }
 
-        _T pop()
+        _T *pop()
         {
-            _T *ptr = _list + _f;
-            _f = (_f + 1) % (_Count + 1);
-            return *ptr;
+            if(count() == 0)
+            {
+                return NULL;
+            }
+            auto ptr = _list + _f;
+            _f = (_f + 1) % (_Count);
+            return ptr;
         }
 
         const int count() const
         {
+            //if (_f == -1)
+            //{
+            //    return 0;
+            //}
             if (_r >= _f)
             {
                 return _r - _f;
             }
             else
             {
-                return _Count + 1 - (_f - _r);
+                return _Count - (_f - _r);
             }
         }
 
@@ -60,7 +74,7 @@ namespace testtools
         {
             if (count() > index)
             {
-                return _list + (_f + index) % (_Count + 1);
+                return _list + (_f + index) % (_Count);
             }
             return NULL;
         }
@@ -72,7 +86,7 @@ namespace testtools
     protected:
         int _f;
         int _r;
-        _T  _list[_Count + 1];
+        _T  _list[_Count];
     };
 
     class TestCommandBase
