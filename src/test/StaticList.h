@@ -2,14 +2,15 @@
 #ifndef __STATIC_LIST__
 #define __STATIC_LIST__
 
+
 namespace test
 {
     template<class Data_t>
     struct StaticListNode
     {
-        int next;
-        int pre;
-        Data_t self;
+        int     next;
+        int     pre;
+        Data_t  data;
     };
 
     template<class Data_t, size_t ElementCount>
@@ -20,14 +21,16 @@ namespace test
         {
             int next;
             int pre;
-            Data_t self;
+            Data_t data;
         };
+
         struct _IdelList 
         {
             _IdelList() : count(ElementCount), first(0) {}
             size_t count;
             int first;
         } idel_;
+
         struct _UsedList 
         {
             _UsedList() : count(0), first(-1), last(-1) {}
@@ -36,12 +39,12 @@ namespace test
             int last;
         } used_;
 
+    public:
         void push_back(const Data_t& _Val)
         {
             if (idel_.count == 0)
             {
-                // ???
-                return;
+                return;  // ?????? [8/28/2015]
             }
             idel_.count--;
             used_.count++;
