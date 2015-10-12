@@ -30,8 +30,8 @@ class index:
 
 class hellowode:
     def GET(self):
-        name = 'Bob'
-        return render.hellowode(name)
+        data = web.input(name='Bob')
+        return render.hellowode(data.name)
 
 
 app = web.application(urls, globals())
