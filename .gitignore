@@ -1,4 +1,5 @@
 support/*
+support/pb/lib
 vsprojects/bin/*
 vsprojects/ipch/*
 vsprojects/bdb/bdbDebug/*
@@ -7,6 +8,7 @@ vsprojects/test/testDebug/*
 vsprojects/test/testRelease/*
 vsprojects/pbbox/pbboxDebug/*
 vsprojects/pbbox/pbboxRelease/*
+vsprojects/lua101/lua101Debug/
 .idea
 pyproject/.idea/
 vsprojects/lua101/
