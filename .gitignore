@@ -9,6 +9,7 @@ vsprojects/pbbox/pbboxDebug/*
 vsprojects/pbbox/pbboxRelease/*
 .idea
 pyproject/.idea/
+vsprojects/lua101/
 
 *.ini
 *.json
