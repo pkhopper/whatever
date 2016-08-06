@@ -7,6 +7,8 @@ vsprojects/test/testDebug/*
 vsprojects/test/testRelease/*
 vsprojects/pbbox/pbboxDebug/*
 vsprojects/pbbox/pbboxRelease/*
+.idea
+pyproject/.idea/
 
 *.ini
 *.json

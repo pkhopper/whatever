@@ -1,43 +1,36 @@
-// test.cpp : 定义控制台应用程序的入口点。
-//
-
-#include <stdio.h>
 #include <iostream>
-//#include "test_cmd.h"
-#include <boost/program_options.hpp>
+#include <thread>
+#include <chrono>
+#include <stdlib.h>
+#include <string.h>
 
-namespace po = boost::program_options;
 
-int main(int argc, char* argv[])
+void segv()
+{        
+    // sigsegv
+    int* ptr = 0;
+    *ptr = 1;
+}
+
+void abrt()
 {
-    //int level;  
-    po::options_description desc("Allowed options");  
-    desc.add_options()  
-        ("help,h", "produce help message")  
-        //("help,h", "produce help message")  
-        ("compression,c", po::value<int>(), "set compression level")
-        ;
+    // sigabrt
+    char buffer[3];
+    strcpy(buffer, "123456");
+}
 
-    po::variables_map vm;  
-    po::store(po::parse_command_line(argc, argv, desc), vm);  
-    po::notify(vm);  
-
-    if(vm.count("help"))  
-    {  
-        std::cout<<desc<<std::endl;  
-        return 1;  
-    }  
-
-    if(vm.count("compression"))  
-    {  
-        std::cout<<"compression level was set to "<<vm["compression"].as<int>()<<"."<<std::endl;  
-        //cout<<"compression level: "<<level<<endl;  
-    }  
-    else  
-    {  
-        std::cout<<"compression level was not set."<<std::endl;  
-    }  
-
-    return 0;  
+int main(int argc, char *argv[]) 
+{
+    int cmd;
+    std::cin >> cmd;
+    switch(cmd)
+    {
+    case 1: segv(); break;
+    case 2: abrt(); break;
+    default:
+        std::cout << "what u want" << std::endl;
+        break;
+    }
+    return 0;
 }
 

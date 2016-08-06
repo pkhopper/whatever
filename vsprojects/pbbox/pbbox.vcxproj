@@ -11,14 +11,25 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\pbbox\ByteBuffer.cpp" />
+    <ClCompile Include="..\..\src\pbbox\DumpFile.cpp" />
     <ClCompile Include="..\..\src\pbbox\main.cpp" />
     <ClCompile Include="..\..\src\pbbox\messages\mytype.pb.cc" />
+    <ClCompile Include="..\..\src\pbbox\dump_pb.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\pbbox\ByteBuffer.h" />
+    <ClInclude Include="..\..\src\pbbox\DumpFile.h" />
     <ClInclude Include="..\..\src\pbbox\messages\mytype.pb.h" />
+    <ClInclude Include="..\..\src\pbbox\dump_pb.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\pbbox\proto\mytype.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\support\pb\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE8A3EE6-E632-4E7F-A401-6DA51B2D0468}</ProjectGuid>

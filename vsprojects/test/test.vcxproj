@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\test\class_over_write.cpp" />
     <ClCompile Include="..\..\src\test\test.cpp" />
   </ItemGroup>
   <ItemGroup>

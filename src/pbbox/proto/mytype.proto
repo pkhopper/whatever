@@ -6,3 +6,18 @@ message MyType{
     optional bytes StrMessage = 3;
 }
 
+message MyType1{
+    required int32 id = 1;
+	required int64 longId = 2;
+    optional bytes StrMessage = 3;
+}
+message MyType2{
+    required int32 id = 1;
+	required int64 longId = 2;
+    optional bytes StrMessage = 3;
+}
+message MyType3{
+    required int32 id = 1;
+	required int64 longId = 2;
+    optional bytes StrMessage = 3;
+}
