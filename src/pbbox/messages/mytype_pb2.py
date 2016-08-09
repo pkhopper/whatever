@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mytype.proto',
   package='',
-  serialized_pb=_b('\n\x0cmytype.proto\"8\n\x06MyType\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType1\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType2\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType3\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c')
+  serialized_pb=_b('\n\x0cmytype.proto\"8\n\x06MyType\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType1\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType2\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType3\x12\n\n\x02id\x18\x01 \x02(\x05\x12\x0e\n\x06longId\x18\x02 \x02(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"`\n\x0bMyTypeArray\x12\x12\n\x01t\x18\x01 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t1\x18\x02 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t2\x18\x03 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t3\x18\x04 \x03(\x0b\x32\x07.MyType')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -200,10 +200,66 @@ _MYTYPE3 = _descriptor.Descriptor(
   serialized_end=249,
 )
 
+
+_MYTYPEARRAY = _descriptor.Descriptor(
+  name='MyTypeArray',
+  full_name='MyTypeArray',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='t', full_name='MyTypeArray.t', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='t1', full_name='MyTypeArray.t1', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='t2', full_name='MyTypeArray.t2', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='t3', full_name='MyTypeArray.t3', index=3,
+      number=4, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=251,
+  serialized_end=347,
+)
+
+_MYTYPEARRAY.fields_by_name['t'].message_type = _MYTYPE
+_MYTYPEARRAY.fields_by_name['t1'].message_type = _MYTYPE
+_MYTYPEARRAY.fields_by_name['t2'].message_type = _MYTYPE
+_MYTYPEARRAY.fields_by_name['t3'].message_type = _MYTYPE
 DESCRIPTOR.message_types_by_name['MyType'] = _MYTYPE
 DESCRIPTOR.message_types_by_name['MyType1'] = _MYTYPE1
 DESCRIPTOR.message_types_by_name['MyType2'] = _MYTYPE2
 DESCRIPTOR.message_types_by_name['MyType3'] = _MYTYPE3
+DESCRIPTOR.message_types_by_name['MyTypeArray'] = _MYTYPEARRAY
 
 MyType = _reflection.GeneratedProtocolMessageType('MyType', (_message.Message,), dict(
   DESCRIPTOR = _MYTYPE,
@@ -232,6 +288,13 @@ MyType3 = _reflection.GeneratedProtocolMessageType('MyType3', (_message.Message,
   # @@protoc_insertion_point(class_scope:MyType3)
   ))
 _sym_db.RegisterMessage(MyType3)
+
+MyTypeArray = _reflection.GeneratedProtocolMessageType('MyTypeArray', (_message.Message,), dict(
+  DESCRIPTOR = _MYTYPEARRAY,
+  __module__ = 'mytype_pb2'
+  # @@protoc_insertion_point(class_scope:MyTypeArray)
+  ))
+_sym_db.RegisterMessage(MyTypeArray)
 
 
 # @@protoc_insertion_point(module_scope)

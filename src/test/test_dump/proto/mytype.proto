@@ -21,3 +21,9 @@ message MyType3{
 	required int64 longId = 2;
     optional bytes StrMessage = 3;
 }
+message MyTypeArray{
+    repeated MyType t  = 1;
+    repeated MyType t1 = 2;
+    repeated MyType t2 = 3;
+    repeated MyType t3 = 4;
+}

@@ -38,6 +38,7 @@ class MyType;
 class MyType1;
 class MyType2;
 class MyType3;
+class MyTypeArray;
 
 // ===================================================================
 
@@ -507,6 +508,137 @@ class MyType3 : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static MyType3* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MyTypeArray : public ::google::protobuf::Message {
+ public:
+  MyTypeArray();
+  virtual ~MyTypeArray();
+
+  MyTypeArray(const MyTypeArray& from);
+
+  inline MyTypeArray& operator=(const MyTypeArray& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MyTypeArray& default_instance();
+
+  void Swap(MyTypeArray* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MyTypeArray* New() const { return New(NULL); }
+
+  MyTypeArray* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MyTypeArray& from);
+  void MergeFrom(const MyTypeArray& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MyTypeArray* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .MyType t = 1;
+  inline int t_size() const;
+  inline void clear_t();
+  static const int kTFieldNumber = 1;
+  inline const ::MyType& t(int index) const;
+  inline ::MyType* mutable_t(int index);
+  inline ::MyType* add_t();
+  inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+      t() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+      mutable_t();
+
+  // repeated .MyType t1 = 2;
+  inline int t1_size() const;
+  inline void clear_t1();
+  static const int kT1FieldNumber = 2;
+  inline const ::MyType& t1(int index) const;
+  inline ::MyType* mutable_t1(int index);
+  inline ::MyType* add_t1();
+  inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+      t1() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+      mutable_t1();
+
+  // repeated .MyType t2 = 3;
+  inline int t2_size() const;
+  inline void clear_t2();
+  static const int kT2FieldNumber = 3;
+  inline const ::MyType& t2(int index) const;
+  inline ::MyType* mutable_t2(int index);
+  inline ::MyType* add_t2();
+  inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+      t2() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+      mutable_t2();
+
+  // repeated .MyType t3 = 4;
+  inline int t3_size() const;
+  inline void clear_t3();
+  static const int kT3FieldNumber = 4;
+  inline const ::MyType& t3(int index) const;
+  inline ::MyType* mutable_t3(int index);
+  inline ::MyType* add_t3();
+  inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+      t3() const;
+  inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+      mutable_t3();
+
+  // @@protoc_insertion_point(class_scope:MyTypeArray)
+ private:
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::MyType > t_;
+  ::google::protobuf::RepeatedPtrField< ::MyType > t1_;
+  ::google::protobuf::RepeatedPtrField< ::MyType > t2_;
+  ::google::protobuf::RepeatedPtrField< ::MyType > t3_;
+  friend void  protobuf_AddDesc_mytype_2eproto();
+  friend void protobuf_AssignDesc_mytype_2eproto();
+  friend void protobuf_ShutdownFile_mytype_2eproto();
+
+  void InitAsDefaultInstance();
+  static MyTypeArray* default_instance_;
+};
 // ===================================================================
 
 
@@ -928,6 +1060,130 @@ inline void MyType3::set_allocated_strmessage(::std::string* strmessage) {
   }
   strmessage_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), strmessage);
   // @@protoc_insertion_point(field_set_allocated:MyType3.StrMessage)
+}
+
+// -------------------------------------------------------------------
+
+// MyTypeArray
+
+// repeated .MyType t = 1;
+inline int MyTypeArray::t_size() const {
+  return t_.size();
+}
+inline void MyTypeArray::clear_t() {
+  t_.Clear();
+}
+inline const ::MyType& MyTypeArray::t(int index) const {
+  // @@protoc_insertion_point(field_get:MyTypeArray.t)
+  return t_.Get(index);
+}
+inline ::MyType* MyTypeArray::mutable_t(int index) {
+  // @@protoc_insertion_point(field_mutable:MyTypeArray.t)
+  return t_.Mutable(index);
+}
+inline ::MyType* MyTypeArray::add_t() {
+  // @@protoc_insertion_point(field_add:MyTypeArray.t)
+  return t_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+MyTypeArray::t() const {
+  // @@protoc_insertion_point(field_list:MyTypeArray.t)
+  return t_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+MyTypeArray::mutable_t() {
+  // @@protoc_insertion_point(field_mutable_list:MyTypeArray.t)
+  return &t_;
+}
+
+// repeated .MyType t1 = 2;
+inline int MyTypeArray::t1_size() const {
+  return t1_.size();
+}
+inline void MyTypeArray::clear_t1() {
+  t1_.Clear();
+}
+inline const ::MyType& MyTypeArray::t1(int index) const {
+  // @@protoc_insertion_point(field_get:MyTypeArray.t1)
+  return t1_.Get(index);
+}
+inline ::MyType* MyTypeArray::mutable_t1(int index) {
+  // @@protoc_insertion_point(field_mutable:MyTypeArray.t1)
+  return t1_.Mutable(index);
+}
+inline ::MyType* MyTypeArray::add_t1() {
+  // @@protoc_insertion_point(field_add:MyTypeArray.t1)
+  return t1_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+MyTypeArray::t1() const {
+  // @@protoc_insertion_point(field_list:MyTypeArray.t1)
+  return t1_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+MyTypeArray::mutable_t1() {
+  // @@protoc_insertion_point(field_mutable_list:MyTypeArray.t1)
+  return &t1_;
+}
+
+// repeated .MyType t2 = 3;
+inline int MyTypeArray::t2_size() const {
+  return t2_.size();
+}
+inline void MyTypeArray::clear_t2() {
+  t2_.Clear();
+}
+inline const ::MyType& MyTypeArray::t2(int index) const {
+  // @@protoc_insertion_point(field_get:MyTypeArray.t2)
+  return t2_.Get(index);
+}
+inline ::MyType* MyTypeArray::mutable_t2(int index) {
+  // @@protoc_insertion_point(field_mutable:MyTypeArray.t2)
+  return t2_.Mutable(index);
+}
+inline ::MyType* MyTypeArray::add_t2() {
+  // @@protoc_insertion_point(field_add:MyTypeArray.t2)
+  return t2_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+MyTypeArray::t2() const {
+  // @@protoc_insertion_point(field_list:MyTypeArray.t2)
+  return t2_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+MyTypeArray::mutable_t2() {
+  // @@protoc_insertion_point(field_mutable_list:MyTypeArray.t2)
+  return &t2_;
+}
+
+// repeated .MyType t3 = 4;
+inline int MyTypeArray::t3_size() const {
+  return t3_.size();
+}
+inline void MyTypeArray::clear_t3() {
+  t3_.Clear();
+}
+inline const ::MyType& MyTypeArray::t3(int index) const {
+  // @@protoc_insertion_point(field_get:MyTypeArray.t3)
+  return t3_.Get(index);
+}
+inline ::MyType* MyTypeArray::mutable_t3(int index) {
+  // @@protoc_insertion_point(field_mutable:MyTypeArray.t3)
+  return t3_.Mutable(index);
+}
+inline ::MyType* MyTypeArray::add_t3() {
+  // @@protoc_insertion_point(field_add:MyTypeArray.t3)
+  return t3_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::MyType >&
+MyTypeArray::t3() const {
+  // @@protoc_insertion_point(field_list:MyTypeArray.t3)
+  return t3_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::MyType >*
+MyTypeArray::mutable_t3() {
+  // @@protoc_insertion_point(field_mutable_list:MyTypeArray.t3)
+  return &t3_;
 }
 
 

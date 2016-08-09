@@ -13,13 +13,24 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\test\class_over_write.cpp" />
     <ClCompile Include="..\..\src\test\test.cpp" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\mytype.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\test_dump.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\test\StaticList.h" />
-    <ClInclude Include="..\..\src\test\stdafx.h" />
     <ClInclude Include="..\..\src\test\test_cmd.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\mytype.pb.h" />
     <ClInclude Include="..\..\src\test\test_pack.cpp" />
-    <ClInclude Include="..\..\src\test\time_interval.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\support\pb\protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\bdb\bdb.vcxproj">
+      <Project>{eb4d2436-2437-49f3-aaa3-afdfab2f8ee0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vavava\vavava.vcxproj">
+      <Project>{b67b2f62-f3c7-4670-b037-f64376278156}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6CBD3498-AB51-4BE2-9DD0-3B035A9C5541}</ProjectGuid>
@@ -56,6 +67,7 @@
     <TargetName>$(projectName)_d</TargetName>
     <IntDir>$(projectName)$(Configuration)\</IntDir>
     <EmbedManifest>false</EmbedManifest>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -71,12 +83,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/;$(SolutionDir)/../src/</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../support/boost/lib/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../support/boost/lib/;$(SolutionDir)/bin/</AdditionalLibraryDirectories>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,7 +100,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/;$(SolutionDir)/../src/</AdditionalIncludeDirectories>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
     </ClCompile>
     <Link>
@@ -95,7 +108,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)/../support/boost/lib/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/../support/boost/lib/;$(SolutionDir)/bin/</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,36 +1,22 @@
 #include <iostream>
-#include <thread>
-#include <chrono>
-#include <stdlib.h>
-#include <string.h>
+#include <sstream>
+#include <vavava/TimeInterval.h>
 
-
-void segv()
-{        
-    // sigsegv
-    int* ptr = 0;
-    *ptr = 1;
-}
-
-void abrt()
-{
-    // sigabrt
-    char buffer[3];
-    strcpy(buffer, "123456");
-}
+int test_dump(int argc, char* argv[]);
+int test_dump_performance(int argc, char* argv[]);
 
 int main(int argc, char *argv[]) 
 {
-    int cmd;
-    std::cin >> cmd;
-    switch(cmd)
-    {
-    case 1: segv(); break;
-    case 2: abrt(); break;
-    default:
-        std::cout << "what u want" << std::endl;
-        break;
-    }
+    test_dump(argc, argv); 
     return 0;
+    //std::stringstream ss;
+    //vavava::TimeInterval t;
+    //t.tick();
+    //test_dump(argc, argv);
+    //t.tick();
+    //ss << t.get_interval();
+    //std::cout << ss.str() << std::endl;
+    //getchar();
+    //return 0;
 }
 

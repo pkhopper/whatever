@@ -33,26 +33,27 @@ int vavava::dump::dump_encode(ByteBuffer& buffer, ::google::protobuf::Message* p
     // binary_data
     assert(pMessage);
     assert(pMessage->IsInitialized());
-
+    std::string typeName = pMessage->GetTypeName();
+    //std::string typeName = "MyTypeArray";
     buffer.reset();
     buffer.append8(SYN_CODE);
-    buffer.append8(pMessage->GetTypeName().length() + 1);
-    buffer.append(pMessage->GetTypeName().c_str(), pMessage->GetTypeName().length());
+    buffer.append8(typeName.length() + 1);
+    buffer.append(typeName.c_str(), typeName.length());
     buffer.append8('\0');
     auto total_len_ptr = reinterpret_cast<uint32_t*>(buffer.write_ptr());
     buffer.append32(0);
     if (pMessage->SerializeToArray(buffer.write_ptr(), buffer.writeable()))
     {
-        buffer.has_written(pMessage->ByteSize());
         *total_len_ptr = pMessage->ByteSize();
+        buffer.has_written(*total_len_ptr);
         return true;
     }
     return false;
 }
 
-MessagePtr vavava::dump::dump_decode(const ByteBuffer& buffer)
+message_shared_ptr_t vavava::dump::dump_decode(const ByteBuffer& buffer)
 {
-    MessagePtr data;
+    message_shared_ptr_t data;
     uint32_t offset = 0;
     assert(buffer.peek8(offset) == SYN_CODE);
     if (buffer.peek8(offset++) == SYN_CODE)
@@ -95,7 +96,7 @@ int vavava::dump::dump_encode(const std::string& fullpath, ::google::protobuf::M
     return -1;
 }
 
-MessagePtr vavava::dump::dump_decode(const std::string& fullpath)
+message_shared_ptr_t vavava::dump::dump_decode(const std::string& fullpath)
 {
     ByteBuffer buffer;
     vavava::dump::DumpFile pbfile;
@@ -109,7 +110,7 @@ MessagePtr vavava::dump::dump_decode(const std::string& fullpath)
             return dump_decode(buffer);
         }
     }
-    return MessagePtr();
+    return message_shared_ptr_t();
 }
 
 int check(const std::string& fullpath)

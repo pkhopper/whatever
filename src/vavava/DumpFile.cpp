@@ -21,7 +21,7 @@ bool DumpFile::open(const std::string& filename, const std::string& flag)
     if (!is_open())
     {
         name_ = filename;
-        fp_ = ::fopen(name().c_str(), flag.c_str());
+        auto err = ::fopen_s(&fp_, name().c_str(), flag.c_str());
         if (fp_)
         {
             return true;
@@ -38,7 +38,7 @@ bool DumpFile::is_open()
 int DumpFile::readall(char* ptr, int* pSize)
 {
     int err = -1;
-    if (pSize)
+    if (!pSize)
     {
         return -1;
     }
