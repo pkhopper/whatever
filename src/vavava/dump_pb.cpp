@@ -24,7 +24,7 @@ google::protobuf::Message* create_message(const std::string& typeName)
     return message;
 }
 
-int vavava::dump::dump_encode(ByteBuffer& buffer, ::google::protobuf::Message* pMessage)
+int vavava::dump::dump_encode(ByteBuffer& buffer, const std::string& typeName, ::google::protobuf::Message* pMessage)
 {
     // uint8_t  syn
     // uint8_t  name_len
@@ -33,7 +33,6 @@ int vavava::dump::dump_encode(ByteBuffer& buffer, ::google::protobuf::Message* p
     // binary_data
     assert(pMessage);
     assert(pMessage->IsInitialized());
-    std::string typeName = pMessage->GetTypeName();
     //std::string typeName = "MyTypeArray";
     buffer.reset();
     buffer.append8(SYN_CODE);
@@ -49,6 +48,14 @@ int vavava::dump::dump_encode(ByteBuffer& buffer, ::google::protobuf::Message* p
         return true;
     }
     return false;
+}
+
+int vavava::dump::dump_encode(ByteBuffer& buffer, ::google::protobuf::Message* pMessage)
+{
+    assert(pMessage);
+    assert(pMessage->IsInitialized());
+    std::string typeName = pMessage->GetTypeName();
+    return vavava::dump::dump_encode(buffer, typeName, pMessage);
 }
 
 message_shared_ptr_t vavava::dump::dump_decode(const ByteBuffer& buffer)
@@ -75,6 +82,25 @@ message_shared_ptr_t vavava::dump::dump_decode(const ByteBuffer& buffer)
         }        
     }
     return data;
+}
+
+int vavava::dump::dump_encode(const std::string& fullpath, const std::string& typeName,::google::protobuf::Message* ptr)
+{
+    assert(ptr);
+    if (ptr)
+    {
+        ByteBuffer buffer;
+        vavava::dump::DumpFile pbfile;
+        pbfile.open(fullpath);
+        if (pbfile.is_open())
+        {
+            if (vavava::dump::dump_encode(buffer, typeName, ptr))
+            {
+                return pbfile.writeall(buffer.begin(), buffer.readable());
+            }
+        }
+    }
+    return -1;
 }
 
 int vavava::dump::dump_encode(const std::string& fullpath, ::google::protobuf::Message* ptr)

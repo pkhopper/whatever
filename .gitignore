@@ -17,6 +17,7 @@ vsprojects/lua101/
 *.json
 *.txt
 *.db3
+*.proto
 
 #################
 ## Eclipse

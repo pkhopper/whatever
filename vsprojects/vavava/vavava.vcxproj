@@ -64,6 +64,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\..\support\;..\..\support\pb\inc;..\..\support\bdb\inc;..\..\support\boost\inc</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zm2000 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

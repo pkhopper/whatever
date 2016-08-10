@@ -13,12 +13,28 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\test\class_over_write.cpp" />
     <ClCompile Include="..\..\src\test\test.cpp" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\ArenaData.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\GMSvrMessage.pb.cc" />
     <ClCompile Include="..\..\src\test\test_dump\proto\cpp\mytype.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\PlayerDBData.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\PlayerDBMsg.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\RanklistDBData.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\RanklistDBMsg.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\SNSDBData.pb.cc" />
+    <ClCompile Include="..\..\src\test\test_dump\proto\cpp\SNSDBMsg.pb.cc" />
     <ClCompile Include="..\..\src\test\test_dump\test_dump.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\test\test_cmd.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\ArenaData.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\GMSvrMessage.pb.h" />
     <ClInclude Include="..\..\src\test\test_dump\proto\cpp\mytype.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\PlayerDBData.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\PlayerDBMsg.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\RanklistDBData.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\RanklistDBMsg.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\SNSDBData.pb.h" />
+    <ClInclude Include="..\..\src\test\test_dump\proto\cpp\SNSDBMsg.pb.h" />
     <ClInclude Include="..\..\src\test\test_pack.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +47,9 @@
     <ProjectReference Include="..\vavava\vavava.vcxproj">
       <Project>{b67b2f62-f3c7-4670-b037-f64376278156}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\test\test_dump\proto\mytype.proto" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6CBD3498-AB51-4BE2-9DD0-3B035A9C5541}</ProjectGuid>
@@ -84,6 +103,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/;$(SolutionDir)/../src/</AdditionalIncludeDirectories>
+      <AdditionalOptions>/Zm2000 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

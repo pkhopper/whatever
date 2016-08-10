@@ -15,8 +15,10 @@ namespace vavava
 {
     namespace dump
     {
+        int dump_encode(ByteBuffer& buffer, const std::string& typeName, ::google::protobuf::Message* pMessage);
         // not work well, performance with Message.GetTypeName is hell
         int dump_encode(ByteBuffer&, ::google::protobuf::Message*);
+        int dump_encode(const std::string&, const std::string&,::google::protobuf::Message*);
         int dump_encode(const std::string&, ::google::protobuf::Message*);
 
         typedef boost::shared_ptr<google::protobuf::Message> message_shared_ptr_t;

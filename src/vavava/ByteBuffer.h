@@ -157,7 +157,7 @@ namespace vavava
             buffer_.clear();
             if (maxlen > 0)
             {
-                buffer_.reserve(maxlen);
+                buffer_.resize(maxlen);
             }
         }
 

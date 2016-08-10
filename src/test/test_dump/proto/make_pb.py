@@ -5,6 +5,7 @@ import sys
 import subprocess
 import shutil
 reload(sys).setdefaultencoding("utf8")
+from parse_proto import make_pbmessage_id_proto
 
 ABS_PATH = os.path.abspath
 PJOIN = os.path.join
@@ -15,6 +16,7 @@ _dst_dir_py = ABS_PATH(PJOIN(_root_path, "../messages"))
 _tmp_dir_cpp = ABS_PATH(PJOIN(_root_path, "cpp"))
 _tmp_dir_py = ABS_PATH(PJOIN(_root_path, "py"))
 _protoc_bin = ABS_PATH(PJOIN(_root_path, "protoc"))
+_pbmessageid_file = ABS_PATH(PJOIN(_root_path, "PBMessageID.proto"))
 
 def _exec_bin(cmd, *args):
     cmd_args = [cmd]	
@@ -28,6 +30,7 @@ def _exec_bin(cmd, *args):
 
 def compile_proto_files():
     proto_files = [PJOIN(_proto_path, f) for f in os.listdir(_proto_path) if f.endswith(".proto")]
+    make_pbmessage_id_proto(proto_files, _pbmessageid_file)
     ret = _exec_bin(
 	    _protoc_bin,
 	    "--cpp_out=%s" % _tmp_dir_cpp,

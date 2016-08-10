@@ -7,7 +7,7 @@ int test_dump_performance(int argc, char* argv[]);
 
 int main(int argc, char *argv[]) 
 {
-    test_dump(argc, argv); 
+    test_dump_performance(argc, argv); 
     return 0;
     //std::stringstream ss;
     //vavava::TimeInterval t;
