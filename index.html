@@ -1,0 +1,97 @@
+<!-- Given a specific date, write a function to return the day of the year for that date. The signature of the function is
+         int dayOfYear(int year, int month, int day)
+ 
+For example, given input of year=2016, month=1, day=3. The function should return 3 as the date 2016-01-03 is the 3rd day of the year 2016.
+Another example, given input of year=2016, month=2, day=1. The function should return 32 as the date 2016-02-01 is the 32nd day of the year 2016.
+ -->
+
+<!doctype html>
+<html>
+ <head>
+  <title>Document</title>
+  <meta charset="UTF-8">
+ </head>
+ <body>
+  <script>
+	// var year = parseInt(prompt("please input a year:"));
+	// var month = parseInt(prompt("please input a month:"));
+	// var day = parseInt(prompt("please input a day:"));
+
+
+	function dayOfYear(year, month, day) {
+		var result = 0;
+		for (var i = 1; i < month; i++) {
+			if (i == 2) {
+				year % 4 == 0 && year % 100 != 0 || year % 400 == 0 ? result = result + 29 : result = result + 28;
+			} else if (i == 4 || i == 6 || i == 9 || i == 11) {
+				result = result + 30;
+			} else {
+				result = result + 31;
+			}
+		}
+		result = result + day;
+		return result;
+	}
+
+	function dayOfYear2(year, month, day) {
+		var d1 = new Date(year, month, day, 1, 0, 0);
+		var d2 = new Date(d1.getFullYear(), 0, 0, 0);
+		var oneDay = 86400000; // 1000 * 60 * 60 * 24;
+		var diff = d1 - d2;
+		var day = Math.round(diff / oneDay);
+		return day;
+	}
+    
+	function test1(date) {
+		return dayOfYear(date.getFullYear(), date.getMonth(), date.getDate());
+	}
+	function test2(date) {
+		return dayOfYear2(date.getFullYear(), date.getMonth(), date.getDate());
+	}
+
+    console.log("test for func1", test1(new Date('July 1, 2007')) === 182);
+    console.log("test for func1", test1(new Date('July 2, 1999')) === 183);
+    console.log("test for func1", test1(new Date('January 3, 2013')) === 3);
+    console.log("test for func1", test1(new Date('February 1, 2016')) === 32);
+    console.log("test for func1", test1(new Date('February 2, 2016')) === 33);
+    console.log("test for func1", test1(new Date('February 3, 2016')) === 34);
+    console.log("test for func1", test1(new Date('February 4, 2016')) === 35);
+    console.log("test for func1", test1(new Date('February 5, 2016')) === 36);
+    console.log("test for func1", test1(new Date('February 6, 2016')) === 37);
+    console.log("test for func1", test1(new Date('February 7, 2016')) === 38);
+    console.log("test for func1", test1(new Date('February 8, 2016')) === 39);
+    console.log("test for func1", test1(new Date('February 9, 2016')) === 40);
+
+    console.log("test for func2", test2(new Date('July 1, 2007')) === 182);
+    console.log("test for func2", test2(new Date('July 2, 1999')) === 183);
+    console.log("test for func2", test2(new Date('January 3, 2013')) === 3);
+    console.log("test for func2", test2(new Date('February 1, 2016')) === 32);
+    console.log("test for func2", test2(new Date('February 2, 2016')) === 33);
+    console.log("test for func2", test2(new Date('February 3, 2016')) === 34);
+    console.log("test for func2", test2(new Date('February 4, 2016')) === 35);
+    console.log("test for func2", test2(new Date('February 5, 2016')) === 36);
+    console.log("test for func2", test2(new Date('February 6, 2016')) === 37);
+    console.log("test for func2", test2(new Date('February 7, 2016')) === 38);
+    console.log("test for func2", test2(new Date('February 8, 2016')) === 39);
+    console.log("test for func2", test2(new Date('February 9, 2016')) === 40);
+    
+	// function GetRandomNum(Min,Max)
+	// {   
+	// 	var Range = Max - Min;   
+	// 	var Rand = Math.random();   
+	// 	return(Min + Math.round(Rand * Range));   
+	// }   
+	// for (var i = 1000; i >= 0; i--) {
+	// 	var year = GetRandomNum(2000, 2200);
+	// 	var month = GetRandomNum(1, 13);
+	// 	var day = GetRandomNum(0, 33);
+	// 	var ret1 = dayOfYear1(year,month,day);
+	// 	var ret2 = dayOfYear(year,month,day);
+	// 	if (ret1 != ret2) {
+	// 		console.log(year, month, day, "ret1=", ret1, "ret2=", ret2);
+	// 	}
+	// }
+
+  </script>
+ </body>
+</html>
