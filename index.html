@@ -30,6 +30,7 @@ Another example, given input of year=2016, month=2, day=1. The function should r
 			}
 		}
 		result = result + day;
+		// console.log(year, month, day, result);
 		return result;
 	}
 
@@ -43,7 +44,7 @@ Another example, given input of year=2016, month=2, day=1. The function should r
 	}
     
 	function test1(date) {
-		return dayOfYear(date.getFullYear(), date.getMonth(), date.getDate());
+		return dayOfYear(date.getFullYear(), date.getMonth()+1, date.getDate());
 	}
 	function test2(date) {
 		return dayOfYear2(date.getFullYear(), date.getMonth(), date.getDate());
@@ -74,23 +75,23 @@ Another example, given input of year=2016, month=2, day=1. The function should r
     console.log("test for func2", test2(new Date('February 7, 2016')) === 38);
     console.log("test for func2", test2(new Date('February 8, 2016')) === 39);
     console.log("test for func2", test2(new Date('February 9, 2016')) === 40);
-    
-	// function GetRandomNum(Min,Max)
-	// {   
-	// 	var Range = Max - Min;   
-	// 	var Rand = Math.random();   
-	// 	return(Min + Math.round(Rand * Range));   
-	// }   
-	// for (var i = 1000; i >= 0; i--) {
-	// 	var year = GetRandomNum(2000, 2200);
-	// 	var month = GetRandomNum(1, 13);
-	// 	var day = GetRandomNum(0, 33);
-	// 	var ret1 = dayOfYear1(year,month,day);
-	// 	var ret2 = dayOfYear(year,month,day);
-	// 	if (ret1 != ret2) {
-	// 		console.log(year, month, day, "ret1=", ret1, "ret2=", ret2);
-	// 	}
-	// }
+
+	function GetRandomNum(Min,Max)
+	{   
+		var Range = Max - Min;   
+		var Rand = Math.random();   
+		return(Min + Math.round(Rand * Range));   
+	}   
+	for (var i = 1000; i >= 0; i--) {
+		var year = GetRandomNum(2000, 2200);
+		var month = GetRandomNum(1, 13);
+		var day = GetRandomNum(0, 33);
+		var ret1 = dayOfYear(year,month,day);
+		var ret2 = dayOfYear2(year,month-1,day);
+		if (ret1 != ret2) {
+			console.log(year, month, day, "ret1=", ret1, "ret2=", ret2);
+		}
+	}
 
   </script>
  </body>
