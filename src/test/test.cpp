@@ -4,11 +4,16 @@
 
 int test_dump(int argc, char* argv[]);
 int test_dump_performance(int argc, char* argv[]);
+int test_pb_reflection(int argc, char* argv[]);
 
 int main(int argc, char *argv[]) 
 {
-    test_dump_performance(argc, argv); 
+    test_pb_reflection(argc, argv);
     return 0;
+
+    //test_dump_performance(argc, argv); 
+    //return 0;
+    
     //std::stringstream ss;
     //vavava::TimeInterval t;
     //t.tick();

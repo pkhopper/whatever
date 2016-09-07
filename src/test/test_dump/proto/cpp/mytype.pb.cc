@@ -180,8 +180,8 @@ void protobuf_AddDesc_mytype_2eproto() {
     "pe1\022\n\n\002id\030\001 \001(\005\022\016\n\006longId\030\002 \001(\003\022\022\n\nStrMe"
     "ssage\030\003 \001(\014\"9\n\007MyType2\022\n\n\002id\030\001 \001(\005\022\016\n\006lo"
     "ngId\030\002 \001(\003\022\022\n\nStrMessage\030\003 \001(\014\"9\n\007MyType"
-    "3\022\n\n\002id\030\001 \001(\005\022\016\n\006longId\030\002 \001(\003\022\022\n\nStrMess"
-    "age\030\003 \001(\014\"`\n\013MyTypeArray\022\022\n\001t\030\001 \003(\0132\007.My"
+    "3\022\n\n\002id\030\001 \003(\005\022\016\n\006longId\030\002 \003(\003\022\022\n\nStrMess"
+    "age\030\003 \003(\014\"`\n\013MyTypeArray\022\022\n\001t\030\001 \003(\0132\007.My"
     "Type\022\023\n\002t1\030\002 \003(\0132\007.MyType\022\023\n\002t2\030\003 \003(\0132\007."
     "MyType\022\023\n\002t3\030\004 \003(\0132\007.MyType", 347);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
@@ -1166,9 +1166,6 @@ MyType3::MyType3(const MyType3& from)
 void MyType3::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  id_ = 0;
-  longid_ = GOOGLE_LONGLONG(0);
-  strmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1178,9 +1175,6 @@ MyType3::~MyType3() {
 }
 
 void MyType3::SharedDtor() {
-  if (strmessage_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete strmessage_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -1207,15 +1201,9 @@ MyType3* MyType3::New() const {
 }
 
 void MyType3::Clear() {
-  if (_has_bits_[0 / 32] & 7) {
-    id_ = 0;
-    longid_ = GOOGLE_LONGLONG(0);
-    if (has_strmessage()) {
-      if (strmessage_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        strmessage_->clear();
-      }
-    }
-  }
+  id_.Clear();
+  longid_.Clear();
+  strmessage_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1230,44 +1218,54 @@ bool MyType3::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 id = 1;
+      // repeated int32 id = 1;
       case 1: {
         if (tag == 8) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+         parse_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &id_)));
-          set_has_id();
+                 1, 8, input, this->mutable_id())));
+        } else if (tag == 10) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_id())));
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(8)) goto parse_id;
         if (input->ExpectTag(16)) goto parse_longId;
         break;
       }
 
-      // optional int64 longId = 2;
+      // repeated int64 longId = 2;
       case 2: {
         if (tag == 16) {
          parse_longId:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
-                 input, &longid_)));
-          set_has_longid();
+                 1, 16, input, this->mutable_longid())));
+        } else if (tag == 18) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, this->mutable_longid())));
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(16)) goto parse_longId;
         if (input->ExpectTag(26)) goto parse_StrMessage;
         break;
       }
 
-      // optional bytes StrMessage = 3;
+      // repeated bytes StrMessage = 3;
       case 3: {
         if (tag == 26) {
          parse_StrMessage:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_strmessage()));
+                input, this->add_strmessage()));
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(26)) goto parse_StrMessage;
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1297,20 +1295,22 @@ failure:
 void MyType3::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:MyType3)
-  // optional int32 id = 1;
-  if (has_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
+  // repeated int32 id = 1;
+  for (int i = 0; i < this->id_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      1, this->id(i), output);
   }
 
-  // optional int64 longId = 2;
-  if (has_longid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt64(2, this->longid(), output);
+  // repeated int64 longId = 2;
+  for (int i = 0; i < this->longid_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(
+      2, this->longid(i), output);
   }
 
-  // optional bytes StrMessage = 3;
-  if (has_strmessage()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytesMaybeAliased(
-      3, this->strmessage(), output);
+  // repeated bytes StrMessage = 3;
+  for (int i = 0; i < this->strmessage_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      3, this->strmessage(i), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1323,21 +1323,22 @@ void MyType3::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MyType3::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:MyType3)
-  // optional int32 id = 1;
-  if (has_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
+  // repeated int32 id = 1;
+  for (int i = 0; i < this->id_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32ToArray(1, this->id(i), target);
   }
 
-  // optional int64 longId = 2;
-  if (has_longid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(2, this->longid(), target);
+  // repeated int64 longId = 2;
+  for (int i = 0; i < this->longid_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt64ToArray(2, this->longid(i), target);
   }
 
-  // optional bytes StrMessage = 3;
-  if (has_strmessage()) {
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->strmessage(), target);
+  // repeated bytes StrMessage = 3;
+  for (int i = 0; i < this->strmessage_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteBytesToArray(3, this->strmessage(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1351,29 +1352,33 @@ void MyType3::SerializeWithCachedSizes(
 int MyType3::ByteSize() const {
   int total_size = 0;
 
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional int32 id = 1;
-    if (has_id()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->id());
+  // repeated int32 id = 1;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->id_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int32Size(this->id(i));
     }
-
-    // optional int64 longId = 2;
-    if (has_longid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int64Size(
-          this->longid());
-    }
-
-    // optional bytes StrMessage = 3;
-    if (has_strmessage()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->strmessage());
-    }
-
+    total_size += 1 * this->id_size() + data_size;
   }
+
+  // repeated int64 longId = 2;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->longid_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int64Size(this->longid(i));
+    }
+    total_size += 1 * this->longid_size() + data_size;
+  }
+
+  // repeated bytes StrMessage = 3;
+  total_size += 1 * this->strmessage_size();
+  for (int i = 0; i < this->strmessage_size(); i++) {
+    total_size += ::google::protobuf::internal::WireFormatLite::BytesSize(
+      this->strmessage(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1399,17 +1404,9 @@ void MyType3::MergeFrom(const ::google::protobuf::Message& from) {
 
 void MyType3::MergeFrom(const MyType3& from) {
   GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_id()) {
-      set_id(from.id());
-    }
-    if (from.has_longid()) {
-      set_longid(from.longid());
-    }
-    if (from.has_strmessage()) {
-      set_strmessage(from.strmessage());
-    }
-  }
+  id_.MergeFrom(from.id_);
+  longid_.MergeFrom(from.longid_);
+  strmessage_.MergeFrom(from.strmessage_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1432,9 +1429,9 @@ bool MyType3::IsInitialized() const {
 
 void MyType3::Swap(MyType3* other) {
   if (other != this) {
-    std::swap(id_, other->id_);
-    std::swap(longid_, other->longid_);
-    std::swap(strmessage_, other->strmessage_);
+    id_.Swap(&other->id_);
+    longid_.Swap(&other->longid_);
+    strmessage_.Swap(&other->strmessage_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

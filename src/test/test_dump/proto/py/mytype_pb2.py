@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='mytype.proto',
   package='',
-  serialized_pb=_b('\n\x0cmytype.proto\"8\n\x06MyType\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType1\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType2\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType3\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"`\n\x0bMyTypeArray\x12\x12\n\x01t\x18\x01 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t1\x18\x02 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t2\x18\x03 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t3\x18\x04 \x03(\x0b\x32\x07.MyType')
+  serialized_pb=_b('\n\x0cmytype.proto\"8\n\x06MyType\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType1\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType2\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x0e\n\x06longId\x18\x02 \x01(\x03\x12\x12\n\nStrMessage\x18\x03 \x01(\x0c\"9\n\x07MyType3\x12\n\n\x02id\x18\x01 \x03(\x05\x12\x0e\n\x06longId\x18\x02 \x03(\x03\x12\x12\n\nStrMessage\x18\x03 \x03(\x0c\"`\n\x0bMyTypeArray\x12\x12\n\x01t\x18\x01 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t1\x18\x02 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t2\x18\x03 \x03(\x0b\x32\x07.MyType\x12\x13\n\x02t3\x18\x04 \x03(\x0b\x32\x07.MyType')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -166,22 +166,22 @@ _MYTYPE3 = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='id', full_name='MyType3.id', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
+      number=1, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='longId', full_name='MyType3.longId', index=1,
-      number=2, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
+      number=2, type=3, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='StrMessage', full_name='MyType3.StrMessage', index=2,
-      number=3, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
+      number=3, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

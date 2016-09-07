@@ -13,15 +13,18 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\vavava\DumpFile.cpp" />
     <ClCompile Include="..\..\src\vavava\dump_pb.cpp" />
+    <ClCompile Include="..\..\src\vavava\util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\vavava\ByteBuffer.h" />
     <ClInclude Include="..\..\src\vavava\DumpFile.h" />
     <ClInclude Include="..\..\src\vavava\dump_pb.h" />
+    <ClInclude Include="..\..\src\vavava\ignore_warnings.h" />
+    <ClInclude Include="..\..\src\vavava\ProtobufHelper.h" />
     <ClInclude Include="..\..\src\vavava\StaticList.h" />
     <ClInclude Include="..\..\src\vavava\TimeInterval.h" />
     <ClInclude Include="..\..\src\vavava\time_interval.h" />
-    <ClInclude Include="..\..\src\vavava\Uitls.h" />
+    <ClInclude Include="..\..\src\vavava\util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{B67B2F62-F3C7-4670-B037-F64376278156}</ProjectGuid>

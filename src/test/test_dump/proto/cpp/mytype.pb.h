@@ -404,48 +404,56 @@ class MyType3 : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional int32 id = 1;
-  inline bool has_id() const;
+  // repeated int32 id = 1;
+  inline int id_size() const;
   inline void clear_id();
   static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::int32 id() const;
-  inline void set_id(::google::protobuf::int32 value);
+  inline ::google::protobuf::int32 id(int index) const;
+  inline void set_id(int index, ::google::protobuf::int32 value);
+  inline void add_id(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      id() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_id();
 
-  // optional int64 longId = 2;
-  inline bool has_longid() const;
+  // repeated int64 longId = 2;
+  inline int longid_size() const;
   inline void clear_longid();
   static const int kLongIdFieldNumber = 2;
-  inline ::google::protobuf::int64 longid() const;
-  inline void set_longid(::google::protobuf::int64 value);
+  inline ::google::protobuf::int64 longid(int index) const;
+  inline void set_longid(int index, ::google::protobuf::int64 value);
+  inline void add_longid(::google::protobuf::int64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int64 >&
+      longid() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int64 >*
+      mutable_longid();
 
-  // optional bytes StrMessage = 3;
-  inline bool has_strmessage() const;
+  // repeated bytes StrMessage = 3;
+  inline int strmessage_size() const;
   inline void clear_strmessage();
   static const int kStrMessageFieldNumber = 3;
-  inline const ::std::string& strmessage() const;
-  inline void set_strmessage(const ::std::string& value);
-  inline void set_strmessage(const char* value);
-  inline void set_strmessage(const void* value, size_t size);
-  inline ::std::string* mutable_strmessage();
-  inline ::std::string* release_strmessage();
-  inline void set_allocated_strmessage(::std::string* strmessage);
+  inline const ::std::string& strmessage(int index) const;
+  inline ::std::string* mutable_strmessage(int index);
+  inline void set_strmessage(int index, const ::std::string& value);
+  inline void set_strmessage(int index, const char* value);
+  inline void set_strmessage(int index, const void* value, size_t size);
+  inline ::std::string* add_strmessage();
+  inline void add_strmessage(const ::std::string& value);
+  inline void add_strmessage(const char* value);
+  inline void add_strmessage(const void* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& strmessage() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_strmessage();
 
   // @@protoc_insertion_point(class_scope:MyType3)
  private:
-  inline void set_has_id();
-  inline void clear_has_id();
-  inline void set_has_longid();
-  inline void clear_has_longid();
-  inline void set_has_strmessage();
-  inline void clear_has_strmessage();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::int64 longid_;
-  ::std::string* strmessage_;
-  ::google::protobuf::int32 id_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > id_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int64 > longid_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> strmessage_;
   friend void  protobuf_AddDesc_mytype_2eproto();
   friend void protobuf_AssignDesc_mytype_2eproto();
   friend void protobuf_ShutdownFile_mytype_2eproto();
@@ -965,128 +973,118 @@ inline void MyType2::set_allocated_strmessage(::std::string* strmessage) {
 
 // MyType3
 
-// optional int32 id = 1;
-inline bool MyType3::has_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MyType3::set_has_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MyType3::clear_has_id() {
-  _has_bits_[0] &= ~0x00000001u;
+// repeated int32 id = 1;
+inline int MyType3::id_size() const {
+  return id_.size();
 }
 inline void MyType3::clear_id() {
-  id_ = 0;
-  clear_has_id();
+  id_.Clear();
 }
-inline ::google::protobuf::int32 MyType3::id() const {
+inline ::google::protobuf::int32 MyType3::id(int index) const {
   // @@protoc_insertion_point(field_get:MyType3.id)
-  return id_;
+  return id_.Get(index);
 }
-inline void MyType3::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
+inline void MyType3::set_id(int index, ::google::protobuf::int32 value) {
+  id_.Set(index, value);
   // @@protoc_insertion_point(field_set:MyType3.id)
 }
+inline void MyType3::add_id(::google::protobuf::int32 value) {
+  id_.Add(value);
+  // @@protoc_insertion_point(field_add:MyType3.id)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+MyType3::id() const {
+  // @@protoc_insertion_point(field_list:MyType3.id)
+  return id_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+MyType3::mutable_id() {
+  // @@protoc_insertion_point(field_mutable_list:MyType3.id)
+  return &id_;
+}
 
-// optional int64 longId = 2;
-inline bool MyType3::has_longid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MyType3::set_has_longid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void MyType3::clear_has_longid() {
-  _has_bits_[0] &= ~0x00000002u;
+// repeated int64 longId = 2;
+inline int MyType3::longid_size() const {
+  return longid_.size();
 }
 inline void MyType3::clear_longid() {
-  longid_ = GOOGLE_LONGLONG(0);
-  clear_has_longid();
+  longid_.Clear();
 }
-inline ::google::protobuf::int64 MyType3::longid() const {
+inline ::google::protobuf::int64 MyType3::longid(int index) const {
   // @@protoc_insertion_point(field_get:MyType3.longId)
-  return longid_;
+  return longid_.Get(index);
 }
-inline void MyType3::set_longid(::google::protobuf::int64 value) {
-  set_has_longid();
-  longid_ = value;
+inline void MyType3::set_longid(int index, ::google::protobuf::int64 value) {
+  longid_.Set(index, value);
   // @@protoc_insertion_point(field_set:MyType3.longId)
 }
+inline void MyType3::add_longid(::google::protobuf::int64 value) {
+  longid_.Add(value);
+  // @@protoc_insertion_point(field_add:MyType3.longId)
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int64 >&
+MyType3::longid() const {
+  // @@protoc_insertion_point(field_list:MyType3.longId)
+  return longid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int64 >*
+MyType3::mutable_longid() {
+  // @@protoc_insertion_point(field_mutable_list:MyType3.longId)
+  return &longid_;
+}
 
-// optional bytes StrMessage = 3;
-inline bool MyType3::has_strmessage() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void MyType3::set_has_strmessage() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void MyType3::clear_has_strmessage() {
-  _has_bits_[0] &= ~0x00000004u;
+// repeated bytes StrMessage = 3;
+inline int MyType3::strmessage_size() const {
+  return strmessage_.size();
 }
 inline void MyType3::clear_strmessage() {
-  if (strmessage_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strmessage_->clear();
-  }
-  clear_has_strmessage();
+  strmessage_.Clear();
 }
-inline const ::std::string& MyType3::strmessage() const {
+inline const ::std::string& MyType3::strmessage(int index) const {
   // @@protoc_insertion_point(field_get:MyType3.StrMessage)
-  return *strmessage_;
+  return strmessage_.Get(index);
 }
-inline void MyType3::set_strmessage(const ::std::string& value) {
-  set_has_strmessage();
-  if (strmessage_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strmessage_ = new ::std::string;
-  }
-  strmessage_->assign(value);
+inline ::std::string* MyType3::mutable_strmessage(int index) {
+  // @@protoc_insertion_point(field_mutable:MyType3.StrMessage)
+  return strmessage_.Mutable(index);
+}
+inline void MyType3::set_strmessage(int index, const ::std::string& value) {
   // @@protoc_insertion_point(field_set:MyType3.StrMessage)
+  strmessage_.Mutable(index)->assign(value);
 }
-inline void MyType3::set_strmessage(const char* value) {
-  set_has_strmessage();
-  if (strmessage_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strmessage_ = new ::std::string;
-  }
-  strmessage_->assign(value);
+inline void MyType3::set_strmessage(int index, const char* value) {
+  strmessage_.Mutable(index)->assign(value);
   // @@protoc_insertion_point(field_set_char:MyType3.StrMessage)
 }
-inline void MyType3::set_strmessage(const void* value, size_t size) {
-  set_has_strmessage();
-  if (strmessage_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strmessage_ = new ::std::string;
-  }
-  strmessage_->assign(reinterpret_cast<const char*>(value), size);
+inline void MyType3::set_strmessage(int index, const void* value, size_t size) {
+  strmessage_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
   // @@protoc_insertion_point(field_set_pointer:MyType3.StrMessage)
 }
-inline ::std::string* MyType3::mutable_strmessage() {
-  set_has_strmessage();
-  if (strmessage_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    strmessage_ = new ::std::string;
-  }
-  // @@protoc_insertion_point(field_mutable:MyType3.StrMessage)
+inline ::std::string* MyType3::add_strmessage() {
+  return strmessage_.Add();
+}
+inline void MyType3::add_strmessage(const ::std::string& value) {
+  strmessage_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:MyType3.StrMessage)
+}
+inline void MyType3::add_strmessage(const char* value) {
+  strmessage_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:MyType3.StrMessage)
+}
+inline void MyType3::add_strmessage(const void* value, size_t size) {
+  strmessage_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:MyType3.StrMessage)
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+MyType3::strmessage() const {
+  // @@protoc_insertion_point(field_list:MyType3.StrMessage)
   return strmessage_;
 }
-inline ::std::string* MyType3::release_strmessage() {
-  clear_has_strmessage();
-  if (strmessage_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    return NULL;
-  } else {
-    ::std::string* temp = strmessage_;
-    strmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-    return temp;
-  }
-}
-inline void MyType3::set_allocated_strmessage(::std::string* strmessage) {
-  if (strmessage_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-    delete strmessage_;
-  }
-  if (strmessage) {
-    set_has_strmessage();
-    strmessage_ = strmessage;
-  } else {
-    clear_has_strmessage();
-    strmessage_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  }
-  // @@protoc_insertion_point(field_set_allocated:MyType3.StrMessage)
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+MyType3::mutable_strmessage() {
+  // @@protoc_insertion_point(field_mutable_list:MyType3.StrMessage)
+  return &strmessage_;
 }
 
 // -------------------------------------------------------------------

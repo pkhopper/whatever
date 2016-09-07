@@ -53,15 +53,6 @@ namespace vavava
         int64_t      interval_;
     };
 
-    template<typename IntType>
-    IntType RandomIteger(IntType mean, IntType sigma)
-    {
-        static boost::mt19937 rng(static_cast<unsigned>(std::time(0)));
-        boost::uniform_int<IntType> norm_dist(mean, sigma);
-        boost::variate_generator<boost::mt19937&, boost::uniform_int<IntType> > normal_sampler(rng, norm_dist);
-        return normal_sampler();
-    }
-
 } // vavava
 
 #endif

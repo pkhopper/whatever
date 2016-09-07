@@ -11,7 +11,7 @@
 namespace vavava
 {
 
-    namespace utils
+    namespace util
     {
 
         inline std::string hex_dump(const void * ptr, std::size_t len)
@@ -59,6 +59,48 @@ namespace vavava
             Singleton() {}
             Singleton(const Singleton&) {}
         };
+
+        template<typename T>
+        T RandomIteger(T mean, T sigma)
+        {
+            static boost::mt19937 rng(static_cast<unsigned>(std::time(0)));
+            boost::uniform_int<T> norm_dist(mean, sigma);
+            boost::variate_generator<boost::mt19937&, boost::uniform_int<T> > normal_sampler(rng, norm_dist);
+            return normal_sampler();
+        }
+
+        class Random_Class
+        {
+            friend class Singleton<Random_Class>;
+
+        public:
+            int Int(int min, int max)
+            {
+                s_seed=214013*s_seed + 2531011;
+                return min+(s_seed ^ s_seed>>15)%(max-min+1);
+            }
+
+            float Float(float min, float max)
+            {
+                s_seed=214013*s_seed + 2531011;
+                return min+(s_seed>>16)*(1.0f/65535.0f)*(max-min);
+            }
+
+            template<typename T>
+            T Iteger(T mean, T sigma)
+            {
+                RandomIteger<T>(mean, sigma);
+            }
+
+        protected:
+            Random_Class()
+            {
+                s_seed = (unsigned int) time(NULL);
+            }
+            static unsigned int s_seed;
+        };
+
+        typedef Singleton<Random_Class>  Random;
 
     }
 

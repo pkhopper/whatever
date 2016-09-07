@@ -21,9 +21,9 @@ message MyType2
 }
 message MyType3
 {
-    optional int32 id = 1;
-	optional int64 longId = 2;
-    optional bytes StrMessage = 3;
+    repeated int32 id = 1;
+	repeated int64 longId = 2;
+    repeated bytes StrMessage = 3;
 }
 message MyTypeArray
 {
