@@ -189,3 +189,4 @@ pip-log.txt
 
 # Third-party component
 /mutagen*
+pyproject/MiniWebServer/deploy.sh
