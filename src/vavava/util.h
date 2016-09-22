@@ -102,6 +102,33 @@ namespace vavava
 
         typedef Singleton<Random_Class>  Random;
 
+        // data lock
+        struct DataLock 
+        {
+            int count;
+
+            bool IsLocked()
+            {
+                return count != 0;
+            }
+
+            DataLock() : count(0) 
+            {
+
+            }
+        };
+        struct DataLockGuard
+        {
+            DataLockGuard(DataLock& l) : l_(l)
+            {
+                l_.count++;
+            }
+            ~DataLockGuard()
+            {
+                l_.count--;
+            }
+            DataLock& l_;
+        };
     }
 
 
