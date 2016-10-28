@@ -32,3 +32,7 @@ message MyTypeArray
     repeated MyType t2 = 3;
     repeated MyType t3 = 4;
 }
+message TestRequiredField
+{
+    required MyType  val = 1;
+}

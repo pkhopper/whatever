@@ -2,11 +2,10 @@
 #include <vavava/WorkThread.h>
 
 
-vavava::Random gRandom;
 
 int thread_run(vavava::thread::Work* pWork, vavava::thread::WorkThread* pTh)
 {
-    std::cout << pTh->th_id() << ", " << gRandom.rand_int(1, 1000) << std::endl;
+    std::cout << pTh->th_id() << ", " << vavava::random::Random::Inst().rand_int(1, 1000) << std::endl;
     return 0;
 }
 
@@ -25,7 +24,7 @@ int test_WorkThread(int argc, char* argv[])
     {
         auto ptr = *it;
         vavava::thread::Work  w;
-        w.run = thread_run;  // boost::bind(&run, _1, _2);
+        w.run = boost::bind(&thread_run, _1, _2);
         w.SetType(vavava::thread::WT_NONSTOP);
         ptr->add(w);
         ptr->start();

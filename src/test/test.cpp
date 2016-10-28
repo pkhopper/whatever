@@ -1,8 +1,9 @@
 #include <iostream>
 #include <sstream>
 #include <vavava/TimeInterval.h>
-#include "vavava/util.h"
+//#include "vavava/util.h"
 #include <unordered_map>
+#include "test_dump/proto/cpp/mytype.pb.h"
 
 int test_dump(int argc, char* argv[]);
 int test_dump_performance(int argc, char* argv[]);
@@ -10,9 +11,19 @@ int test_pb_reflection(int argc, char* argv[]);
 int test_WorkThread(int argc, char* argv[]);
 
 
+
 int main(int argc, char *argv[]) 
 {
-    return test_WorkThread(argc,  argv);
+    TestRequiredField test;
+    auto ptr = test.mutable_val();
+    if (ptr)
+    {
+        ptr->set_id(1);
+    }
+
+    return 0;
+
+    //return test_WorkThread(argc,  argv);
     
     //int count = 1;
 

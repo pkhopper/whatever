@@ -33,6 +33,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* MyTypeArray_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MyTypeArray_reflection_ = NULL;
+const ::google::protobuf::Descriptor* TestRequiredField_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  TestRequiredField_reflection_ = NULL;
 
 }  // namespace
 
@@ -129,6 +132,21 @@ void protobuf_AssignDesc_mytype_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MyTypeArray));
+  TestRequiredField_descriptor_ = file->message_type(5);
+  static const int TestRequiredField_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRequiredField, val_),
+  };
+  TestRequiredField_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      TestRequiredField_descriptor_,
+      TestRequiredField::default_instance_,
+      TestRequiredField_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRequiredField, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TestRequiredField, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(TestRequiredField));
 }
 
 namespace {
@@ -151,6 +169,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     MyType3_descriptor_, &MyType3::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MyTypeArray_descriptor_, &MyTypeArray::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    TestRequiredField_descriptor_, &TestRequiredField::default_instance());
 }
 
 }  // namespace
@@ -166,6 +186,8 @@ void protobuf_ShutdownFile_mytype_2eproto() {
   delete MyType3_reflection_;
   delete MyTypeArray::default_instance_;
   delete MyTypeArray_reflection_;
+  delete TestRequiredField::default_instance_;
+  delete TestRequiredField_reflection_;
 }
 
 void protobuf_AddDesc_mytype_2eproto() {
@@ -183,7 +205,8 @@ void protobuf_AddDesc_mytype_2eproto() {
     "3\022\n\n\002id\030\001 \003(\005\022\016\n\006longId\030\002 \003(\003\022\022\n\nStrMess"
     "age\030\003 \003(\014\"`\n\013MyTypeArray\022\022\n\001t\030\001 \003(\0132\007.My"
     "Type\022\023\n\002t1\030\002 \003(\0132\007.MyType\022\023\n\002t2\030\003 \003(\0132\007."
-    "MyType\022\023\n\002t3\030\004 \003(\0132\007.MyType", 347);
+    "MyType\022\023\n\002t3\030\004 \003(\0132\007.MyType\")\n\021TestRequi"
+    "redField\022\024\n\003val\030\001 \002(\0132\007.MyType", 390);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "mytype.proto", &protobuf_RegisterTypes);
   MyType::default_instance_ = new MyType();
@@ -191,11 +214,13 @@ void protobuf_AddDesc_mytype_2eproto() {
   MyType2::default_instance_ = new MyType2();
   MyType3::default_instance_ = new MyType3();
   MyTypeArray::default_instance_ = new MyTypeArray();
+  TestRequiredField::default_instance_ = new TestRequiredField();
   MyType::default_instance_->InitAsDefaultInstance();
   MyType1::default_instance_->InitAsDefaultInstance();
   MyType2::default_instance_->InitAsDefaultInstance();
   MyType3::default_instance_->InitAsDefaultInstance();
   MyTypeArray::default_instance_->InitAsDefaultInstance();
+  TestRequiredField::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_mytype_2eproto);
 }
 
@@ -1779,6 +1804,234 @@ void MyTypeArray::Swap(MyTypeArray* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = MyTypeArray_descriptor_;
   metadata.reflection = MyTypeArray_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int TestRequiredField::kValFieldNumber;
+#endif  // !_MSC_VER
+
+TestRequiredField::TestRequiredField()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:TestRequiredField)
+}
+
+void TestRequiredField::InitAsDefaultInstance() {
+  val_ = const_cast< ::MyType*>(&::MyType::default_instance());
+}
+
+TestRequiredField::TestRequiredField(const TestRequiredField& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:TestRequiredField)
+}
+
+void TestRequiredField::SharedCtor() {
+  _cached_size_ = 0;
+  val_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+TestRequiredField::~TestRequiredField() {
+  // @@protoc_insertion_point(destructor:TestRequiredField)
+  SharedDtor();
+}
+
+void TestRequiredField::SharedDtor() {
+  if (this != default_instance_) {
+    delete val_;
+  }
+}
+
+void TestRequiredField::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* TestRequiredField::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return TestRequiredField_descriptor_;
+}
+
+const TestRequiredField& TestRequiredField::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_mytype_2eproto();
+  return *default_instance_;
+}
+
+TestRequiredField* TestRequiredField::default_instance_ = NULL;
+
+TestRequiredField* TestRequiredField::New() const {
+  return new TestRequiredField;
+}
+
+void TestRequiredField::Clear() {
+  if (has_val()) {
+    if (val_ != NULL) val_->::MyType::Clear();
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool TestRequiredField::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:TestRequiredField)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .MyType val = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_val()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:TestRequiredField)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:TestRequiredField)
+  return false;
+#undef DO_
+}
+
+void TestRequiredField::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:TestRequiredField)
+  // required .MyType val = 1;
+  if (has_val()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->val(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:TestRequiredField)
+}
+
+::google::protobuf::uint8* TestRequiredField::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:TestRequiredField)
+  // required .MyType val = 1;
+  if (has_val()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->val(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:TestRequiredField)
+  return target;
+}
+
+int TestRequiredField::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required .MyType val = 1;
+    if (has_val()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->val());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void TestRequiredField::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const TestRequiredField* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const TestRequiredField*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void TestRequiredField::MergeFrom(const TestRequiredField& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_val()) {
+      mutable_val()->::MyType::MergeFrom(from.val());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void TestRequiredField::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void TestRequiredField::CopyFrom(const TestRequiredField& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TestRequiredField::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void TestRequiredField::Swap(TestRequiredField* other) {
+  if (other != this) {
+    std::swap(val_, other->val_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata TestRequiredField::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = TestRequiredField_descriptor_;
+  metadata.reflection = TestRequiredField_reflection_;
   return metadata;
 }
 

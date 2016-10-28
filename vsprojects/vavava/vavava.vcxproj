@@ -18,11 +18,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\vavava\ByteBuffer.h" />
+    <ClInclude Include="..\..\src\vavava\DataLock.h" />
     <ClInclude Include="..\..\src\vavava\DumpFile.h" />
     <ClInclude Include="..\..\src\vavava\dump_pb.h" />
     <ClInclude Include="..\..\src\vavava\ignore_warnings.h" />
     <ClInclude Include="..\..\src\vavava\ProtobufHelper.h" />
     <ClInclude Include="..\..\src\vavava\Random.h" />
+    <ClInclude Include="..\..\src\vavava\Singleton.h" />
     <ClInclude Include="..\..\src\vavava\StaticList.h" />
     <ClInclude Include="..\..\src\vavava\TimeInterval.h" />
     <ClInclude Include="..\..\src\vavava\time_interval.h" />

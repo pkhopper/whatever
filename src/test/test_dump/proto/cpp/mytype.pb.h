@@ -36,6 +36,7 @@ class MyType1;
 class MyType2;
 class MyType3;
 class MyTypeArray;
+class TestRequiredField;
 
 // ===================================================================
 
@@ -581,6 +582,87 @@ class MyTypeArray : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static MyTypeArray* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TestRequiredField : public ::google::protobuf::Message {
+ public:
+  TestRequiredField();
+  virtual ~TestRequiredField();
+
+  TestRequiredField(const TestRequiredField& from);
+
+  inline TestRequiredField& operator=(const TestRequiredField& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TestRequiredField& default_instance();
+
+  void Swap(TestRequiredField* other);
+
+  // implements Message ----------------------------------------------
+
+  TestRequiredField* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TestRequiredField& from);
+  void MergeFrom(const TestRequiredField& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .MyType val = 1;
+  inline bool has_val() const;
+  inline void clear_val();
+  static const int kValFieldNumber = 1;
+  inline const ::MyType& val() const;
+  inline ::MyType* mutable_val();
+  inline ::MyType* release_val();
+  inline void set_allocated_val(::MyType* val);
+
+  // @@protoc_insertion_point(class_scope:TestRequiredField)
+ private:
+  inline void set_has_val();
+  inline void clear_has_val();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::MyType* val_;
+  friend void  protobuf_AddDesc_mytype_2eproto();
+  friend void protobuf_AssignDesc_mytype_2eproto();
+  friend void protobuf_ShutdownFile_mytype_2eproto();
+
+  void InitAsDefaultInstance();
+  static TestRequiredField* default_instance_;
 };
 // ===================================================================
 
@@ -1209,6 +1291,51 @@ inline ::google::protobuf::RepeatedPtrField< ::MyType >*
 MyTypeArray::mutable_t3() {
   // @@protoc_insertion_point(field_mutable_list:MyTypeArray.t3)
   return &t3_;
+}
+
+// -------------------------------------------------------------------
+
+// TestRequiredField
+
+// required .MyType val = 1;
+inline bool TestRequiredField::has_val() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TestRequiredField::set_has_val() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TestRequiredField::clear_has_val() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TestRequiredField::clear_val() {
+  if (val_ != NULL) val_->::MyType::Clear();
+  clear_has_val();
+}
+inline const ::MyType& TestRequiredField::val() const {
+  // @@protoc_insertion_point(field_get:TestRequiredField.val)
+  return val_ != NULL ? *val_ : *default_instance_->val_;
+}
+inline ::MyType* TestRequiredField::mutable_val() {
+  set_has_val();
+  if (val_ == NULL) val_ = new ::MyType;
+  // @@protoc_insertion_point(field_mutable:TestRequiredField.val)
+  return val_;
+}
+inline ::MyType* TestRequiredField::release_val() {
+  clear_has_val();
+  ::MyType* temp = val_;
+  val_ = NULL;
+  return temp;
+}
+inline void TestRequiredField::set_allocated_val(::MyType* val) {
+  delete val_;
+  val_ = val;
+  if (val) {
+    set_has_val();
+  } else {
+    clear_has_val();
+  }
+  // @@protoc_insertion_point(field_set_allocated:TestRequiredField.val)
 }
 
 

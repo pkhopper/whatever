@@ -1,8 +1,7 @@
-
 #ifndef _VAVAVA_WORK_THREAD_H__
 #define _VAVAVA_WORK_THREAD_H__
 
-
+#include "ignore_warnings.h"
 #include <sstream>
 #include <string>
 #include <iomanip>
@@ -91,7 +90,10 @@ namespace vavava
             time_t                last_run_;
             std::string           th_id_;
         };
-    }
+
+        void SetThreadName(unsigned long thID, const char* thName);
+
+    } // thread
 
 } // vavava
 

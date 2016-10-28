@@ -7,7 +7,7 @@ using namespace vavava;
 using namespace vavava::thread;
 
 
-void SetThreadName(unsigned long thID, const char* thName)
+void vavava::thread::SetThreadName(unsigned long thID, const char* thName)
 {
 #ifdef WIN32
     const DWORD MS_VC_EXCEPTION = 0x406D1388;
@@ -61,7 +61,7 @@ int WorkThread::start()
     if (th_)
     {
         delete th_;
-        th_ = NULL;
+        th_ = nullptr;
     }
 
     try
