@@ -8,7 +8,7 @@
 #include "test_dump/proto/cpp/mytype.pb.h"
 
 
-int test_pb_reflection(int argc, char* argv[])
+int test_pb_reflection(int argc, char* argv[], bool& running)
 {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     std::stringstream ss;

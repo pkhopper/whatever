@@ -21,7 +21,7 @@ public:
     pnldb::pbmsg::PBCharacterFullData data;
 };
 
-int test_dump(int argc, char* argv[])
+int test_dump(int argc, char* argv[], bool& running)
 {
     std::stringstream ss;
     vavava::TimeInterval t;
@@ -75,7 +75,7 @@ int test_dump(int argc, char* argv[])
     return 0;
 }
 
-int test_dump_performance(int argc, char* argv[])
+int test_dump_performance(int argc, char* argv[], bool& running)
 {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     auto kk = dddddd::getinstance();

@@ -4,17 +4,46 @@
 //#include "vavava/util.h"
 #include <unordered_map>
 #include "test_dump/proto/cpp/mytype.pb.h"
+#include <consoleapi.h>
 
-int test_dump(int argc, char* argv[]);
-int test_dump_performance(int argc, char* argv[]);
-int test_pb_reflection(int argc, char* argv[]);
-int test_WorkThread(int argc, char* argv[]);
 
+//控制台消息接管
+bool gRunning = true;
+BOOL WINAPI MyCMDCtrlHandle(DWORD dwCtrlType)
+{
+    switch(dwCtrlType)
+    {
+    case CTRL_C_EVENT:
+    case CTRL_BREAK_EVENT:
+    case CTRL_CLOSE_EVENT:
+    case CTRL_LOGOFF_EVENT:
+    case CTRL_SHUTDOWN_EVENT:
+        {
+            MessageBeep(-1);
+            gRunning = false;
+            Sleep(1000);
+            return TRUE;
+        }break;
+    default:
+        return FALSE;
+    }
+}
+
+int test_dump(int argc, char* argv[], bool& running);
+int test_dump_performance(int argc, char* argv[], bool& running);
+int test_pb_reflection(int argc, char* argv[], bool& running);
+int test_WorkThread(int argc, char* argv[], bool& running);
 
 
 int main(int argc, char *argv[]) 
 {
-    return test_WorkThread(argc, argv);
+    //接管控制台信号
+    if(0 == SetConsoleCtrlHandler(MyCMDCtrlHandle , TRUE))
+    {
+        std::cout << "SetConsoleCtrlHandler failed " << std::endl;
+    }
+
+    return test_WorkThread(argc, argv, gRunning);
 
     //TestRequiredField test;
     //auto ptr = test.mutable_val();

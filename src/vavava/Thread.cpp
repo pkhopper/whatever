@@ -171,6 +171,7 @@ int Threadpool::Thread::run_()
     }
 
 LB_RUN_CLEAN:
+    std::cout << "thread finished: " << this->th_id() << std::endl << std::flush;
 
     {
         boost::mutex::scoped_lock l(mt_th_);
@@ -375,7 +376,11 @@ struct   Test : public Threadpool::ITask
     }
     virtual int run(Threadpool::ITask* pTask,  Threadpool::Thread* pTh)
     {
-        std::cout << "[" << pTh->th_id() << "]" << tag << std::endl;
+        if (tag % 10000 == 0)
+        {
+            std::cout << "thread: " << pTh->th_id() << ", " << tag << std::endl << std::flush;
+        }
+        //std::cout << "[" << pTh->th_id() << "]" << tag << std::endl;
         return 0;
     }
     int tag;
@@ -387,12 +392,21 @@ int vavava::thread::test(bool &bRunningFlag)
     pool.init(4);
     pool.start();
 
-    int count = 0;
+    int count = 1;
     while (bRunningFlag)
     {
-        pool.push(new Test(count++));
+        if (count++ > 0)
+        {
+            pool.push(new Test(count));
+        }
+        if (count % 100000 == 0)
+        {
+            std::cout << "count, " << count << std::endl;
+        }
         boost::this_thread::sleep(boost::posix_time::microseconds(100));
     }
-    pool.join();
+    std::cout << "shutdown 1" << std::endl << std::flush;
+    pool.shutdown();
+    std::cout << "shutdown 2" << std::endl << std::flush;
     return 0;
 }

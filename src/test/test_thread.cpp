@@ -4,9 +4,8 @@
 
 
 
-int test_WorkThread(int argc, char* argv[])
+int test_WorkThread(int argc, char* argv[], bool& running)
 {
-    bool running = true;
     vavava::thread::test(running);
     return 0;
 }
