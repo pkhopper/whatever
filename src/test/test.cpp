@@ -14,14 +14,16 @@ int test_WorkThread(int argc, char* argv[]);
 
 int main(int argc, char *argv[]) 
 {
-    TestRequiredField test;
-    auto ptr = test.mutable_val();
-    if (ptr)
-    {
-        ptr->set_id(1);
-    }
+    return test_WorkThread(argc, argv);
 
-    return 0;
+    //TestRequiredField test;
+    //auto ptr = test.mutable_val();
+    //if (ptr)
+    //{
+    //    ptr->set_id(1);
+    //}
+
+    //return 0;
 
     //return test_WorkThread(argc,  argv);
     
