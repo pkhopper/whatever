@@ -1,3 +1,4 @@
+#include "ignore_warnings.h"
 #include <string>
 #include <boost/lexical_cast.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
@@ -147,6 +148,7 @@ int Threadpool::Thread::run_()
 
     try
     {
+        int count = 0;
         while (true)
         {
             poolRef_.block_current_thread_until_notified();
@@ -330,6 +332,12 @@ int Threadpool::push(ITask* ptr)
     return -1;
 }
 
+std::size_t Threadpool::task_size()
+{
+    boost::unique_lock<boost::mutex> l(mt_task_);
+    return tasks_.size();
+}
+
 void Threadpool::block_current_thread_until_notified()
 {
     boost::unique_lock<boost::mutex> l(mt_notify_);
@@ -392,7 +400,7 @@ int vavava::thread::test(bool &bRunningFlag)
 {
     vavava::TimeInterval t;
     Threadpool pool;
-    pool.init(4);
+    pool.init(3);
     pool.start();
 
     int count = 1;
@@ -403,16 +411,25 @@ int vavava::thread::test(bool &bRunningFlag)
         {
             pool.push(new Test(count));
         }
-        //if (count % 100000 == 0)
-        //{
-        //    t.tick();
-        //    std::cout << "count, " << count << ", " << t.get_interval() << std::endl;
-        //}
+        if (count % 100000 == 0)
+        {
+            //t.tick();
+            //std::cout << "count, " << count << ", " << t.get_interval() << std::endl;
+        }
         //boost::this_thread::sleep(boost::posix_time::microseconds(100));
     }
     t.tick();
     std::cout << "shutdown 1" << std::endl << std::flush;
     pool.shutdown();
-    std::cout << "shutdown 2, avg=" << t.get_total_nanoseconds() / count << std::endl << std::flush;
+    std::cout << "shutdown 2, " << std::endl << std::flush;
+
+    std::stringstream ss;
+    ss << "=========================================================" << std::endl;
+    ss << "total=" << pool.task_size() << std::endl
+        << ", done=" << count - pool.task_size() << ", avg=" << t.get_total_nanoseconds() / (count - pool.task_size())  << std::endl
+        << ", push=" << pool.task_size() << ", avg=" << t.get_total_nanoseconds() / count << std::endl
+        ;
+    ss << "=========================================================" << std::endl;
+    std::cout << ss.str() << std::endl;
     return 0;
 }

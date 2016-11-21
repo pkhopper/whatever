@@ -81,6 +81,7 @@ namespace vavava
             int join();
             int shutdown(int timeout=-1); // s
             int push(ITask* ptr);
+            std::size_t task_size(); // for debug
 
         protected:
             void block_current_thread_until_notified();
