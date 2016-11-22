@@ -19,8 +19,6 @@ namespace vavava
     namespace thread
     {
 
-        void SetThreadName(unsigned long thID, const char* thName);
-
         enum WorkType
         {
             WT_ONCE,
@@ -54,7 +52,6 @@ namespace vavava
             protected:
                 Thread(const Thread& kk) : poolRef_(kk.poolRef_) {}
                 Thread &Thread::operator =(const Thread &) {}
-                void cleanup_();
                 int run_();
 
             protected:
@@ -70,8 +67,10 @@ namespace vavava
 
             struct ITask 
             {
-                virtual int run(ITask*, Thread*) = 0;
+                virtual int run(Thread*) = 0;
             };
+
+            typedef std::list< std::shared_ptr<ITask> >  task_list_t;
 
         public:
             Threadpool();
@@ -81,16 +80,17 @@ namespace vavava
             int join();
             int shutdown(int timeout=-1); // s
             int push(ITask* ptr);
+            int push(std::shared_ptr<ITask> ptr);
             std::size_t task_size(); // for debug
 
         protected:
             void block_current_thread_until_notified();
-            ITask* pull_task();
+            std::shared_ptr<Threadpool::ITask> pull_task();
 
         protected:
             std::vector<Thread*>  pool_;
             boost::mutex          mt_task_;
-            std::list<ITask*>     tasks_;
+            task_list_t           tasks_;
             boost::mutex          mt_notify_;
             boost::condition      notify_;
         };

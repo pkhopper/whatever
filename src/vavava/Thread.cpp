@@ -1,54 +1,26 @@
-#include "ignore_warnings.h"
+#include "../inc/ignore_warnings.h"
 #include <string>
 #include <boost/lexical_cast.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
-#include "TimeInterval.h"
-#include "Thread.h"
+#include "../inc/TimeInterval.h"
+#include "../inc/Thread.h"
 
 
 using namespace vavava;
 using namespace vavava::thread;
 
 
-void vavava::thread::SetThreadName(unsigned long thID, const char* thName)
-{
-#ifdef WIN32
-    const DWORD MS_VC_EXCEPTION = 0x406D1388;
-
-#progma pack(push, 8)
-
-    typedef struct tagTHREADNAME_INFO
-    {
-        DWORD dwType;
-        LPCSTR szName;
-        DWORD dwThreadID;
-        DWORD dwFlags;
-    } THREADNAME_INFO;
-
-#progma pack(pop)
-
-    THREADNAME_INFO INFO;
-    INFO.dwType = 0X1000;
-    INFO.szName = thName;
-    INFO.dwThreadID = thID;
-    INFO.dwFlags = 0;
-
-    _try
-    {
-        RaiseException(MS_VC_EXCEPTION, 0, sizeof(INFO)/sizeof(ULONG_PTR), (ULONG_PTR*)&INFO);
-    }
-    __except(EXCEPTION_EXECUTE_HANDLER)
-    {
-
-    }
-
-#endif
-}
 
 Threadpool::Thread::Thread(Threadpool& ref)
-    : poolRef_(ref)
+    : poolRef_(ref),
+    running_(false),
+    set_stop_(true),
+    exit_on_empty_(true),
+    pTh_(NULL),
+    last_run_(0),
+    th_id_("")
 {
-    cleanup_();
+
 }
 
 Threadpool::Thread::~Thread()
@@ -69,7 +41,7 @@ int Threadpool::Thread::start()
     if (pTh_)
     {
         delete pTh_;
-        pTh_ = nullptr;
+        pTh_ = NULL;
     }
 
     try
@@ -120,23 +92,8 @@ std::string Threadpool::Thread::th_id()
     return th_id_;
 }
 
-void Threadpool::Thread::cleanup_()
-{
-    boost::mutex::scoped_lock l(mt_th_);
-    pTh_ = NULL;
-    running_ = false;
-    set_stop_ = true;
-    exit_on_empty_ = true;
-    last_run_ = 0;
-    th_id_ = "";
-}
-
 int Threadpool::Thread::run_()
 {
-#ifdef WIN32
-    SetThreadName(-1, "work-thread");
-#endif
-
     {
         boost::mutex::scoped_lock l(mt_th_);
         if (is_set_stop() || !running_)
@@ -159,8 +116,7 @@ int Threadpool::Thread::run_()
             auto pTask = poolRef_.pull_task();
             if (pTask)
             {
-                pTask->run(pTask, this);
-                delete pTask;
+                pTask->run(this);
             }
         }
     }
@@ -266,6 +222,7 @@ int Threadpool::shutdown(int timeout)
                 if (ptr)
                 {
                     ptr->join();
+                    delete ptr;
                 }
             }
             pool_.clear();
@@ -320,6 +277,11 @@ int Threadpool::shutdown(int timeout)
 
 int Threadpool::push(ITask* ptr)
 {
+    return push(std::shared_ptr<ITask>(ptr));
+}
+
+int Threadpool::push(std::shared_ptr<ITask> ptr)
+{
     if (ptr)
     {
         {
@@ -344,7 +306,7 @@ void Threadpool::block_current_thread_until_notified()
     notify_.wait(l);
 }
 
-Threadpool::ITask* Threadpool::pull_task()
+std::shared_ptr<Threadpool::ITask> Threadpool::pull_task()
 {
     boost::unique_lock<boost::mutex> l(mt_task_);
     if (tasks_.size() > 0)
@@ -383,7 +345,7 @@ struct   Test : public Threadpool::ITask
     {
         tag = t;
     }
-    virtual int run(Threadpool::ITask* pTask,  Threadpool::Thread* pTh)
+    virtual int run(Threadpool::Thread* pTh)
     {
         //if (count % 100000 == 0)
         //{
