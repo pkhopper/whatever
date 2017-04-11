@@ -93,7 +93,7 @@ int vavava::thread::test(bool &bRunningFlag, int argc, char* argv[])
         threadNum = atoi(argv[1]);
     }
 
-    vavava::TimeInterval t;
+    vavava::NanoInterval t;
     t.tick();
     TestContainer   pool;
     t.tick();

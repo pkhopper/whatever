@@ -24,7 +24,7 @@ public:
 int test_dump(int argc, char* argv[], bool& running)
 {
     std::stringstream ss;
-    vavava::TimeInterval t;
+    vavava::NanoInterval t;
     MyTypeArray array;
     for (int i=0; i < 10; ++i)
     {
@@ -81,7 +81,7 @@ int test_dump_performance(int argc, char* argv[], bool& running)
     auto kk = dddddd::getinstance();
     pnldb::pbmsg::PBCharacterFullData data;
     std::stringstream ss;
-    vavava::TimeInterval t;
+    vavava::NanoInterval t;
     std::string typeName = "pnldb::pbmsg::PBCharacterFullData";
 
     data.set_dirty(1);

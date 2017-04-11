@@ -2,18 +2,14 @@
 #ifndef _VAVAVA_UTILITIES_H__
 #define _VAVAVA_UTILITIES_H__
 
+#include <cstdint>
+#include <chrono>
 
-//#include <sstream>
-//#include <string>
-//#include <iomanip>
-//#include "Singleton.h"
-//#include "Random.h"
-//#include "WorkThread.h"
 
 namespace vavava {
 
-namespace util
-{
+namespace util {
+
 
     //inline std::string hex_dump(const void * ptr, std::size_t len)
     //{

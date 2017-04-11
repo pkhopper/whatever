@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\test\class_over_write.cpp" />
+    <ClCompile Include="..\..\src\test\MyCrushDump.cpp" />
     <ClCompile Include="..\..\src\test\test.cpp" />
     <ClCompile Include="..\..\src\test\test_dump\proto\cpp\ArenaData.pb.cc" />
     <ClCompile Include="..\..\src\test\test_dump\proto\cpp\GMSvrMessage.pb.cc" />
@@ -27,6 +28,7 @@
     <ClCompile Include="..\..\src\test\test_thread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\test\MyCrushDump.h" />
     <ClInclude Include="..\..\src\test\test_cmd.h" />
     <ClInclude Include="..\..\src\test\test_dump\proto\cpp\ArenaData.pb.h" />
     <ClInclude Include="..\..\src\test\test_dump\proto\cpp\GMSvrMessage.pb.h" />
@@ -106,12 +108,14 @@
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
       <AdditionalIncludeDirectories>$(SolutionDir)/../support/;$(SolutionDir)/../support/pb/inc/;$(SolutionDir)/../support/boost/inc/;$(SolutionDir)/../src/</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zm2000 %(AdditionalOptions)</AdditionalOptions>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)/../support/boost/lib/;$(SolutionDir)/bin/</AdditionalLibraryDirectories>
       <Profile>true</Profile>
+      <GenerateMapFile>true</GenerateMapFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

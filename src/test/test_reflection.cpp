@@ -12,7 +12,7 @@ int test_pb_reflection(int argc, char* argv[], bool& running)
 {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     std::stringstream ss;
-    vavava::TimeInterval t;
+    vavava::NanoInterval t;
 
     MyTypeArray pb;
 

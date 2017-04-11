@@ -3,55 +3,50 @@
 #define _VAVAVA_TIME_INTERVAL_H__
 
 #include <cstdint>
-#include <boost/chrono.hpp>
-#include <boost/random/uniform_int.hpp>
-#include <boost/random/variate_generator.hpp>
-#include <boost/random/mersenne_twister.hpp>
-#include <boost/date_time/posix_time/posix_time_io.hpp>
-
+#include <chrono>
 
 
 namespace vavava {
-// vavava
 
 
+template<typename T>
 class TimeInterval
 {
-    typedef boost::chrono::steady_clock::time_point  time_point_t;
+    typedef std::chrono::time_point<std::chrono::high_resolution_clock>  time_point_t;
 public:
-    TimeInterval(void)
+    TimeInterval()
     {
-        first_ = boost::chrono::high_resolution_clock::now();
+        first_ = std::chrono::high_resolution_clock::now();
     }
 
     void tick()
     {
-        interval_ = get_nanoseconds();
-    }
-
-    int64_t get_nanoseconds()
-    {
-        auto now = boost::chrono::high_resolution_clock::now();
+        auto now = std::chrono::high_resolution_clock::now();
         auto d = now - last_;
         last_ = now;
-        return boost::chrono::duration_cast<boost::chrono::nanoseconds>(d).count();
+        interval_ = std::chrono::duration_cast<T>(d).count();
     }
-
+    
     int64_t get_interval()
     {
         return interval_;
     }
 
-    int64_t get_total_nanoseconds()
+    int64_t get_total()
     {
-        auto now = boost::chrono::high_resolution_clock::now();
-        return boost::chrono::duration_cast<boost::chrono::nanoseconds>(now - first_).count();
+        auto now = std::chrono::high_resolution_clock::now();
+        return std::chrono::duration_cast<T>(now - first_).count();
     }
+
 protected:
     time_point_t last_;
     time_point_t first_;
-    int64_t      interval_;
+    int64_t interval_;
 };
+
+typedef TimeInterval<std::chrono::nanoseconds>  NanoInterval;
+typedef TimeInterval<std::chrono::microseconds>  MicroInterval;
+typedef TimeInterval<std::chrono::seconds>  SecondsInterval;
 
 
 } // vavava
